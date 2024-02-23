@@ -64,7 +64,7 @@ const Login = () => {
           <Grid item xs={12} display={"flex"} justifyContent={"center"}>
             <Box component="img" alt="Image" src={LoginImage} />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} pt={2}>
             {/* <Typography variant="h3" textAlign={"center"}>
             Login
           </Typography> */}
