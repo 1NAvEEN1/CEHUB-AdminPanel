@@ -4,131 +4,131 @@ import {
   Button,
   Checkbox,
   Grid,
+  IconButton,
+  InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
-import LoginImage from "../../assets/LoginImage.png";
-import BlueTextField from "../../components/BlueTextField/BlueTextField";
+import LoginImage from "../../assets/LoginLogo.png";
+import { Link, useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import {
+  hideLoadingAnimation,
+  showLoadingAnimation,
+} from "../../app/loadingAnimationController";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleLogin = async (data) => {
+    try {
+      showLoadingAnimation({ message: "Login..." });
+      navigate("/Dashboard/Overview");
+    } catch (error) {
+    } finally {
+      hideLoadingAnimation();
+    }
+  };
+
   return (
     <Box
+      height={"100svh"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      minHeight={"100svh"}
     >
-      <Grid container pl={2} pr={2}>
-        <Grid item xs={12} lg={6}>
-          <Grid container>
-            <Grid
-              item
-              xs={12}
-              textAlign={"center"}
-              sx={{
-                display: {
-                  xs: "block",
-                  lg: "none",
-                },
+      <form onSubmit={handleSubmit(handleLogin)}>
+        <Grid
+          container
+          maxWidth={400}
+          sx={{
+            boxShadow: 7,
+            borderRadius: 3,
+            p: 2,
+          }}
+        >
+          <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+            <Box component="img" alt="Image" src={LoginImage} />
+          </Grid>
+          <Grid item xs={12}>
+            {/* <Typography variant="h3" textAlign={"center"}>
+            Login
+          </Typography> */}
+          </Grid>
+          <Grid item xs={12} pl={2} pr={2}>
+            <Typography mb={0.5}>Username</Typography>
+            <TextField
+              fullWidth
+              size="small"
+              placeholder="Username"
+              error={!!errors.username}
+              {...register("username", { required: "*Username is required!" })}
+            />
+            <Typography mb={0.5} minHeight={20} fontSize={13} color={"red"}>
+              {errors.username?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} pl={2} pr={2}>
+            <Typography mb={0.5}>Password</Typography>
+            <TextField
+              size="small"
+              placeholder="Password"
+              fullWidth
+              type={showPassword ? "text" : "password"}
+              error={!!errors.password}
+              {...register("password", { required: "*Password is required!" })}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleClickShowPassword} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
               }}
-            >
-              <Typography variant="h2">WELCOME BACK TO</Typography>
-              <Typography variant="h1">MEO-WA</Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Box maxWidth={660}>
-                <Box
-                  component="img"
-                  alt="Image"
-                  src={LoginImage}
-                  width={"100%"}
-                />
-              </Box>
-            </Grid>
+            />
+            <Typography mb={0.5} minHeight={20} fontSize={13} color={"red"}>
+              {errors.password?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} pl={2} pr={2} pt={1}>
+            <Button fullWidth variant="contained" type="submit">
+              <Typography variant="h6">Login</Typography>
+            </Button>
+          </Grid>
+          <Grid item xs={12} pt={3} mb={1}>
+            <Typography color={"#808080"} textAlign={"center"}>
+              Don’t have an account?
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  marginLeft: 3,
+                  color: "#F47621",
+                  fontWeight: 500,
+                }}
+                to="/sign_up"
+              >
+                Sign Up
+              </Link>
+            </Typography>
           </Grid>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          lg={6}
-          p={2}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Box maxWidth={500}>
-            <Grid container spacing={2}>
-              <Grid
-                item
-                xs={12}
-                textAlign={"center"}
-                sx={{
-                  display: {
-                    xs: "none",
-                    lg: "block",
-                  },
-                }}
-              >
-                <Typography variant="h2">WELCOME BACK TO</Typography>
-                <Typography variant="h1">MEO-WA</Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography fontWeight={700} fontSize={20} mb={1}>
-                  Email
-                </Typography>
-                <BlueTextField fullWidth />
-              </Grid>
-              <Grid item xs={12} mt={2}>
-                <Typography fontWeight={700} fontSize={20} mb={1}>
-                  Password
-                </Typography>
-                <BlueTextField fullWidth />
-              </Grid>
-              <Grid item xs={12}>
-                <Grid container>
-                  <Grid item xs={6} display={"flex"} alignItems={"center"}>
-                    <Checkbox size="small" />
-                    <Typography
-                      color={"#808080"}
-                      display={"inline"}
-                      fontWeight={500}
-                    >
-                      Remember Me
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={6} display={"flex"} justifyContent={"end"}>
-                    <Typography
-                      color={"#0582CA"}
-                      display={"inline"}
-                      fontWeight={500}
-                    >
-                      <a>Forgot your password?</a>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                mt={2}
-                display={"flex"}
-                justifyContent={"center"}
-              >
-                <Button variant="contained" sx={{ width: 228, height: 50 }}>
-                  <Typography fontSize={20} fontWeight={700}>
-                    Log In
-                  </Typography>
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-        </Grid>
-      </Grid>
+      </form>
     </Box>
   );
 };
