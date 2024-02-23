@@ -36,6 +36,18 @@ const router = createBrowserRouter([
         path: "/Dashboard/Overview",
         element: <Overview />,
       },
+      {
+        path: "/Suppliers",
+        element: <Overview />,
+      },
+      {
+        path: "/Verification",
+        element: <Overview />,
+      },
+      {
+        path: "/Settings",
+        element: <Overview />,
+      },
     ],
   },
 ]);
