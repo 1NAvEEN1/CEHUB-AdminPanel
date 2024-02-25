@@ -21,43 +21,43 @@ const router = createBrowserRouter([
   //   element: <Registration />,
   // },
   {
-    path: "/",
+    path: "/CEHUB-AdminPanel/",
     element: <Login />,
   },
   {
-    path: "/test",
+    path: "/CEHUB-AdminPanel/test",
     element: <Test />,
   },
   {
-    path: "/",
+    path: "/CEHUB-AdminPanel/",
     element: <Layout />,
     children: [
       {
-        path: "/Dashboard/Overview",
+        path: "/CEHUB-AdminPanel/Dashboard/Overview",
         element: <Overview />,
       },
       {
-        path: "/Dashboard/Map",
+        path: "/CEHUB-AdminPanel/Dashboard/Map",
         element: <Overview />,
       },
       {
-        path: "/Suppliers",
+        path: "/CEHUB-AdminPanel/Suppliers",
         element: <Overview />,
       },
       {
-        path: "/Verification/Process",
+        path: "/CEHUB-AdminPanel/Verification/Process",
         element: <Overview />,
       },
       {
-        path: "/Verification/Verified",
+        path: "/CEHUB-AdminPanel/Verification/Verified",
         element: <Overview />,
       },
       {
-        path: "/Verification/Rejected",
+        path: "/CEHUB-AdminPanel/Verification/Rejected",
         element: <Overview />,
       },
       {
-        path: "/Settings",
+        path: "/CEHUB-AdminPanel/Settings",
         element: <Overview />,
       },
     ],

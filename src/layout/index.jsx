@@ -82,8 +82,9 @@ function Layout() {
 
   useEffect(() => {
     const Url = location.pathname;
+    const newPath = Url.substring(Url.indexOf("/", 1));
     console.log("currentURL", Url);
-    setCurrentUrl(Url);
+    setCurrentUrl(newPath);
   }, [location.pathname]);
 
   return (

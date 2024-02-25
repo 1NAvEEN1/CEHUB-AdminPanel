@@ -37,7 +37,7 @@ const Login = () => {
   const handleLogin = async (data) => {
     try {
       showLoadingAnimation({ message: "Login..." });
-      navigate("/Dashboard/Overview");
+      navigate("/CEHUB-AdminPanel/Dashboard/Overview");
     } catch (error) {
     } finally {
       hideLoadingAnimation();
@@ -116,7 +116,7 @@ const Login = () => {
               <Link
                 style={{
                   textDecoration: "none",
-                  color: "inherit",
+                  // color: "inherit",
                   marginLeft: 3,
                   color: "#F47621",
                   fontWeight: 500,

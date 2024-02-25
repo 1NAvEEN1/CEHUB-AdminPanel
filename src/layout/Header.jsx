@@ -45,7 +45,7 @@ const Header = ({ setOpen, open, currentUrl }) => {
   };
 
   const handleSignOut = () => {
-    navigate("/");
+    navigate("/CEHUB-AdminPanel");
   };
   return (
     <Toolbar>
