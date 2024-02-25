@@ -37,11 +37,23 @@ const router = createBrowserRouter([
         element: <Overview />,
       },
       {
+        path: "/Dashboard/Map",
+        element: <Overview />,
+      },
+      {
         path: "/Suppliers",
         element: <Overview />,
       },
       {
-        path: "/Verification",
+        path: "/Verification/Process",
+        element: <Overview />,
+      },
+      {
+        path: "/Verification/Verified",
+        element: <Overview />,
+      },
+      {
+        path: "/Verification/Rejected",
         element: <Overview />,
       },
       {

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Navigation from "./Navigation";
 import Header from "./Header";
@@ -72,6 +70,22 @@ function Layout() {
     setOpen(false);
   };
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  const handleItemClick = (itemPath) => {
+    setSelectedPage(itemPath);
+    navigate(`.${itemPath}`);
+  };
+
+  useEffect(() => {
+    const Url = location.pathname;
+    console.log("currentURL", Url);
+    setCurrentUrl(Url);
+  }, [location.pathname]);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -83,11 +97,11 @@ function Layout() {
           color: "black",
           // zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: 0,
-          pr:2
+          pr: 2,
         }}
       >
-        <Header setOpen={setOpen} open={open} />
-        <Divider/>
+        <Header setOpen={setOpen} open={open} currentUrl={currentUrl} />
+        <Divider />
       </AppBar>
       <Drawer
         sx={{
@@ -104,7 +118,7 @@ function Layout() {
         open={open}
       >
         <Box height={"100%"} pr={1}>
-          <Navigation />
+          <Navigation currentUrl={currentUrl} />
         </Box>
       </Drawer>
       <Main open={open}>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import Logo from "../assets/NavigationLogo.png";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
@@ -10,44 +9,35 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-const HoverBox = styled(Box)(({ theme }) => ({
-  backgroundColor: "white",
-  position: "relative",
-  width: 70,
-  height: 3,
-  left: 0,
-}));
-
 const MenuItemsList = [
   {
     name: "Overview",
-    path: "/Dashboard/Overview",
+    path: "Dashboard/Overview",
     access: "admin",
     icon: <LeaderboardIcon />,
   },
   {
     name: "Suppliers",
-    path: "/Suppliers",
+    path: "Suppliers",
     access: "admin",
     icon: <WidgetsIcon />,
   },
   {
     name: "Verification",
-    path: "/Verification",
+    path: "Verification/Process",
     access: "admin",
     icon: <AssignmentTurnedInOutlinedIcon />,
   },
   {
     name: "Settings",
-    path: "/Settings",
+    path: "Settings",
     access: "admin",
     icon: <SettingsIcon />,
   },
 ];
 
-const Navigation = () => {
+const Navigation = ({ currentUrl }) => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [selectedMenuItem, setSelectedMenuItem] = useState(
     MenuItemsList[0].path
@@ -55,22 +45,17 @@ const Navigation = () => {
 
   const handleItemClick = (itemPath) => {
     setSelectedMenuItem(itemPath);
-    navigate(`.${itemPath}`);
+    navigate(`./${itemPath}`);
   };
 
   useEffect(() => {
-    const currentUrl = location.pathname;
     const pathSegments = currentUrl.split("/");
     const firstPath = pathSegments[1];
-    const secondPath = pathSegments[2]; // Access the second path segment
-    setSelectedMenuItem(currentUrl);
-    // Assuming you want to navigate to "home" when the firstPath is empty or undefined
-    if (!firstPath) {
-      navigate("home");
-    }
-  }, [location.pathname]);
+    setSelectedMenuItem(firstPath);
+  }, [currentUrl]);
 
   const MenuItem = ({ data }) => {
+    let firstPath = data.path.split("/")[0];
     return (
       <Grid
         container
@@ -82,7 +67,7 @@ const Navigation = () => {
           // }
           borderRadius: 1,
           bgcolor:
-            selectedMenuItem == data.path
+            selectedMenuItem == firstPath
               ? "rgba(244, 118, 33, 0.1)"
               : "inherit",
           maxWidth: 170,
@@ -97,13 +82,13 @@ const Navigation = () => {
           alignItems={"center"}
         >
           {React.cloneElement(data.icon, {
-            color: selectedMenuItem == data.path ? "primary" : "inherit",
+            color: selectedMenuItem == firstPath ? "primary" : "inherit",
           })}
         </Grid>
         <Grid item xs={9} display={"flex"} alignItems={"center"}>
           <Typography
             variant="body1"
-            color={selectedMenuItem == data.path ? "#F47621" : "inherit"}
+            color={selectedMenuItem == firstPath ? "#F47621" : "inherit"}
             pl={1}
           >
             {data.name}
