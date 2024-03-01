@@ -48,10 +48,22 @@ const Overview = () => {
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
-
+      <Grid item xs={12} mb={3}></Grid>
       {/* ---------------------------Count Cards-------------------------------------- */}
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <CountCard count={counts.totalSupplier} title={"Total suppliers"} />
+      </Grid>
+      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+        <CountCard count={counts.product} title={"Products"} />
+      </Grid>
+      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+        <CountCard count={counts.rawMaterial} title={"Raw materials"} />
+      </Grid>
+      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+        <CountCard count={counts.joinCount} title={"Join with CEHub"} />
+      </Grid>
+      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+        <CountCard count={counts.joinPercentage} title={"Join with CEHub %"} />
       </Grid>
     </Grid>
   );

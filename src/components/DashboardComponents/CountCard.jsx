@@ -20,10 +20,10 @@ function CountCard({ title, count }) {
       borderRadius={3}
       p={2}
     >
-      <Typography color={"#000000B3"} fontWeight={700}>
+      <Typography color={"#000000B3"} fontWeight={600}>
         {title}
       </Typography>
-      <Typography variant="h3">{formatCount(count)}</Typography>
+      <Typography variant="h3" fontWeight={600}>{formatCount(count)}</Typography>
     </Box>
   );
 }
