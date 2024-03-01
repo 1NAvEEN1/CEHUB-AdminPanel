@@ -1,9 +1,19 @@
-import React from 'react'
+import { Grid } from "@mui/material";
+import React, { useState } from "react";
+import dayjs from "dayjs";
+import DateFilter from "../../components/FilterComponents/DateFilter";
 
 const Overview = () => {
-  return (
-    <div>Overview</div>
-  )
-}
+  const today = dayjs().format("YYYY-MM-DD");
+  const [date, setDate] = useState(today);
 
-export default Overview
+  return (
+    <Grid container>
+      <Grid item xs={12}>
+        <DateFilter date={date} setDate={setDate} today={today} />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default Overview;
