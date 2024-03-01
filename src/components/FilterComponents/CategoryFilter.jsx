@@ -2,12 +2,8 @@ import { IconButton, Typography, Menu, Box } from "@mui/material";
 import React, { useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-import dayjs from "dayjs";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
-const DateFilter = ({ date, setDate, today }) => {
+export const CategoryFilter = ({ category }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -28,7 +24,7 @@ const DateFilter = ({ date, setDate, today }) => {
     >
       <Box>
         <Typography color={"#000000B3"}>
-          Time : <b>{date === today ? "All-time" : date}</b>
+          Category : <b>{category}</b>
         </Typography>
       </Box>
       <Box sx={{ display: "inline" }}>
@@ -36,17 +32,17 @@ const DateFilter = ({ date, setDate, today }) => {
           {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
         </IconButton>
       </Box>
-
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <StaticDatePicker
-            value={dayjs(date)}
-            onChange={(newDate) => setDate(newDate.format("YYYY-MM-DD"))}
-          />
-        </LocalizationProvider>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        h
       </Menu>
     </Box>
   );
 };
-
-export default DateFilter;

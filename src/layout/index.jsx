@@ -123,7 +123,9 @@ function Layout() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Outlet />
+        <Box ml={-2}>
+          <Outlet />
+        </Box>
       </Main>
     </Box>
   );
