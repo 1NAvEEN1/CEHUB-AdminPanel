@@ -17,13 +17,13 @@ export const SubCategoryFilter  = ({ subCategory }) => {
       display={"flex"}
       alignItems={"center"}
       justifyContent={"space-between"}
-      width={250}
+      width={"100%"}
       border={"1px solid #EFF0F6"}
       borderRadius={5}
       pl={1}
     >
       <Box>
-        <Typography color={"#000000B3"}>
+        <Typography color={"#000000B3"} fontWeight={500}>
           Sub-category : <b>{subCategory}</b>
         </Typography>
       </Box>

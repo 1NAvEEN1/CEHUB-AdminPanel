@@ -7,6 +7,8 @@ import { SubCategoryFilter } from "../../components/FilterComponents/SubCategory
 import { StatusFilter } from "../../components/FilterComponents/StatusFilter";
 import { ProvinceFilter } from "../../components/FilterComponents/ProvinceFilter";
 import CountCard from "../../components/DashboardComponents/CountCard";
+import { BarChart } from "../../components/DashboardComponents/BarChart";
+import { SelectionStatusCard } from "../../components/DashboardComponents/SelectionStatusCard";
 
 const Overview = () => {
   const today = dayjs().format("YYYY-MM-DD");
@@ -28,8 +30,9 @@ const Overview = () => {
   });
 
   return (
-    <Grid container spacing={1} width={"100%"}>
+    <Grid container spacing={2} width={"100%"}>
       {/* --------------------------Filter Options---------------------------------- */}
+
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <DateFilter date={date} setDate={setDate} today={today} />
       </Grid>
@@ -48,8 +51,10 @@ const Overview = () => {
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
-      <Grid item xs={12} mb={3}></Grid>
+      <Grid item xs={12}></Grid>
+
       {/* ---------------------------Count Cards-------------------------------------- */}
+
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <CountCard count={counts.totalSupplier} title={"Total suppliers"} />
       </Grid>
@@ -64,6 +69,14 @@ const Overview = () => {
       </Grid>
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <CountCard count={counts.joinPercentage} title={"Join with CEHub %"} />
+      </Grid>
+
+      {/* --------------------------Charts------------------------------------------ */}
+      <Grid item xs={7.2} display={"flex"} justifyContent={"center"}>
+        <BarChart />
+      </Grid>
+      <Grid item xs={4.8} display={"flex"} justifyContent={"center"}>
+        <SelectionStatusCard />
       </Grid>
     </Grid>
   );

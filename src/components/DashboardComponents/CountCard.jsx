@@ -14,13 +14,13 @@ function CountCard({ title, count }) {
 
   return (
     <Box
-      width={250}
+    width={"100%"}
       height={100}
       border={"1px solid #EFF0F6"}
       borderRadius={3}
       p={2}
     >
-      <Typography color={"#000000B3"} fontWeight={600}>
+      <Typography color={"#000000B3"} fontWeight={500}>
         {title}
       </Typography>
       <Typography variant="h3" fontWeight={600}>{formatCount(count)}</Typography>
