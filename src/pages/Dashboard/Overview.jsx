@@ -9,6 +9,7 @@ import { ProvinceFilter } from "../../components/FilterComponents/ProvinceFilter
 import CountCard from "../../components/DashboardComponents/CountCard";
 import { BarChart } from "../../components/DashboardComponents/BarChart";
 import { SelectionStatusCard } from "../../components/DashboardComponents/SelectionStatusCard";
+import PieChartCard from "../../components/DashboardComponents/PieChartCard";
 
 const Overview = () => {
   const today = dayjs().format("YYYY-MM-DD");
@@ -27,6 +28,54 @@ const Overview = () => {
     rawMaterial: 750,
     joinCount: 1545,
     joinPercentage: "95%",
+  });
+  // ------------------BarChart values-------------------------//
+  const [barChartData, setBarChartData] = useState();
+  //---------------------Selection status------------------------//
+  const [selectionStatusData, setSelectionStatusData] = useState([
+    {
+      status: "Qualified",
+      percentage: 20,
+      count: 350,
+    },
+    {
+      status: "Processing",
+      percentage: 70,
+      count: 1225,
+    },
+    {
+      status: "Reject",
+      percentage: 10,
+      count: 175,
+    },
+  ]);
+
+  // ------------------PieChart values-------------------------//
+
+  const [RegBusinessPieData, setRegBusinessPieData] = useState({
+    title: "Registered businesses",
+    count: 580,
+    percentages: [
+      { id: 0, value: 40, name: "Registered", color: "#F47621" },
+      { id: 1, value: 60, name: "Unregistered", color: "#F4762133" },
+    ],
+  });
+  const [PvtPieData, setPvtPieData] = useState({
+    title: "Private Limited Companies",
+    count: 495,
+    percentages: [
+      { id: 0, value: 70, name: "Company", color: "#F47621" },
+      { id: 1, value: 10, name: "Partnerships", color: "#F4762180" },
+      { id: 2, value: 20, name: "Solo", color: "#F4762133" },
+    ],
+  });
+  const [QCPieData, setQCPieData] = useState({
+    title: "Quality certificate available",
+    count: 358,
+    percentages: [
+      { id: 0, value: 40, name: "Available", color: "#F47621" },
+      { id: 1, value: 60, name: "Not Available", color: "#F4762133" },
+    ],
   });
 
   return (
@@ -70,13 +119,25 @@ const Overview = () => {
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
         <CountCard count={counts.joinPercentage} title={"Join with CEHub %"} />
       </Grid>
+      <Grid item xs={12}></Grid>
 
-      {/* --------------------------Charts------------------------------------------ */}
+      {/* --------------------------Bar Charts------------------------------------------ */}
       <Grid item xs={7.2} display={"flex"} justifyContent={"center"}>
-        <BarChart />
+        <BarChart data={barChartData} />
       </Grid>
       <Grid item xs={4.8} display={"flex"} justifyContent={"center"}>
-        <SelectionStatusCard />
+        <SelectionStatusCard data={selectionStatusData} />
+      </Grid>
+
+      {/* --------------------------Pie Charts------------------------------------------ */}
+      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+        <PieChartCard data={RegBusinessPieData} />
+      </Grid>
+      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+        <PieChartCard data={PvtPieData} />
+      </Grid>
+      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+        <PieChartCard data={QCPieData} />
       </Grid>
     </Grid>
   );

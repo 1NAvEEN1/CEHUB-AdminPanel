@@ -51,7 +51,7 @@ const PercentageBar = ({ data }) => {
   );
 };
 
-export const SelectionStatusCard = () => {
+export const SelectionStatusCard = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -60,26 +60,6 @@ export const SelectionStatusCard = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  //------------------
-
-  const [data, setData] = useState([
-    {
-      status: "Qualified",
-      percentage: 20,
-      count: 350,
-    },
-    {
-      status: "Processing",
-      percentage: 70,
-      count: 1225,
-    },
-    {
-      status: "Reject",
-      percentage: 10,
-      count: 175,
-    },
-  ]);
 
   return (
     <Box
