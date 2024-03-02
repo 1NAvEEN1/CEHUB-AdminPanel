@@ -27,7 +27,7 @@ const Label = ({ data }) => {
           sx={{
             bgcolor: data?.color,
             height: 10,
-            width: 18,
+            minWidth: 18,
             borderRadius: 1,
           }}
         ></Box>
@@ -46,12 +46,12 @@ const PieChartCard = ({ data }) => {
   return (
     <Box
       width={"100%"}
-      height={265}
+      minHeight={265}
       border={"1px solid #EFF0F6"}
       borderRadius={3}
       p={2}
     >
-      <Typography color={"#000000B3"} fontWeight={500}>
+      <Typography color={"#000000B3"} fontWeight={600}>
         {data?.title}
       </Typography>
       <Typography variant="h3" fontWeight={600}>
@@ -80,7 +80,7 @@ const PieChartCard = ({ data }) => {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          <Box display={"flex"} width={"100%"} mt={-5} ml={5}>
+          <Box display={"flex"} width={"100%"} mt={-5} ml={4}>
             <PieChart
               width={300}
               height={200}

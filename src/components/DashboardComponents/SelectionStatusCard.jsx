@@ -7,8 +7,8 @@ import {
   Grid,
 } from "@mui/material";
 import React, { useState } from "react";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
@@ -83,7 +83,7 @@ export const SelectionStatusCard = ({ data }) => {
         <Box sx={{ display: "inline" }}>
           All{" "}
           <IconButton onClick={handleClick}>
-            {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </Box>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>

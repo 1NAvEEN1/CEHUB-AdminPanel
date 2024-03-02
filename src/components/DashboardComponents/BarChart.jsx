@@ -1,7 +1,7 @@
 import { IconButton, Typography, Menu, Box, Divider } from "@mui/material";
 import React, { useState } from "react";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 export const BarChart = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,14 +27,14 @@ export const BarChart = ({ data }) => {
         mt={-1}
       >
         <Box>
-          <Typography color={"#000000B3"} fontWeight={500}>
+          <Typography color={"#000000B3"} fontWeight={600}>
             Supplier Acquisition
           </Typography>
         </Box>
-        <Box sx={{ display: "inline" }}>
+        <Box sx={{ display: "inline" }} fontWeight={600}>
           All{" "}
           <IconButton onClick={handleClick}>
-            {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </Box>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>

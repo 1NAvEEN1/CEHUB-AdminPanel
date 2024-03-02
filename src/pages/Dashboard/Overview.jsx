@@ -10,6 +10,7 @@ import CountCard from "../../components/DashboardComponents/CountCard";
 import { BarChart } from "../../components/DashboardComponents/BarChart";
 import { SelectionStatusCard } from "../../components/DashboardComponents/SelectionStatusCard";
 import PieChartCard from "../../components/DashboardComponents/PieChartCard";
+import ListCard from "../../components/DashboardComponents/ListCard";
 
 const Overview = () => {
   const today = dayjs().format("YYYY-MM-DD");
@@ -78,6 +79,133 @@ const Overview = () => {
     ],
   });
 
+  //--------------------List cards counts--------------------//
+
+  const [ProvinceListCounts, setProvinceListCounts] = useState([
+    {
+      name: "Western",
+      count: 175,
+    },
+    {
+      name: "Central",
+      count: 125,
+    },
+    {
+      name: "Southern",
+      count: 115,
+    },
+    {
+      name: "North Western",
+      count: 95,
+    },
+    {
+      name: "Sabaragamuwa",
+      count: 91,
+    },
+    {
+      name: "Eastern",
+      count: 87,
+    },
+    {
+      name: "Uva",
+      count: 65,
+    },
+    {
+      name: "North Central",
+      count: 54,
+    },
+    {
+      name: "Northern",
+      count: 23,
+    },
+  ]);
+
+  const [FoodListCounts, setFoodListCounts] = useState([
+    {
+      name: "Dehydrated foods",
+      count: 175,
+    },
+    {
+      name: "Processed vegetables, fruits",
+      count: 125,
+    },
+    {
+      name: "Fruit juice",
+      count: 115,
+    },
+    {
+      name: "Spices",
+      count: 95,
+    },
+    {
+      name: "Herbal products",
+      count: 91,
+    },
+    {
+      name: "Food, Feed & Beverage",
+      count: 87,
+    },
+    {
+      name: "Electrical and Electronics",
+      count: 65,
+    },
+    {
+      name: "Garments and Textiles",
+      count: 54,
+    },
+    {
+      name: "Gems and Jewellery",
+      count: 23,
+    },
+    {
+      name: "Other",
+      count: 10,
+    },
+  ]);
+
+  const [CategoryListCounts, setCategoryListCounts] = useState([
+    {
+      name: "Tea",
+      count: 175,
+    },
+    {
+      name: "Rubber",
+      count: 125,
+    },
+    {
+      name: "Coconut",
+      count: 115,
+    },
+    {
+      name: "Spices",
+      count: 95,
+    },
+    {
+      name: "Herbal products",
+      count: 91,
+    },
+    {
+      name: "Food, Feed & Beverage",
+      count: 87,
+    },
+    {
+      name: "Electrical and Electronics",
+      count: 65,
+    },
+    {
+      name: "Garments and Textiles",
+      count: 54,
+    },
+    {
+      name: "Gems and Jewellery",
+      count: 23,
+    },
+    {
+      name: "Other",
+      count: 10,
+    },
+  ]);
+
   return (
     <Grid container spacing={2} width={"100%"}>
       {/* --------------------------Filter Options---------------------------------- */}
@@ -138,6 +266,17 @@ const Overview = () => {
       </Grid>
       <Grid item xs={4} display={"flex"} justifyContent={"center"}>
         <PieChartCard data={QCPieData} />
+      </Grid>
+
+      {/* --------------------------List count Cards------------------------------------*/}
+      <Grid item xs={4}>
+        <ListCard data={ProvinceListCounts} title={"Province"} />
+      </Grid>
+      <Grid item xs={4}>
+        <ListCard data={CategoryListCounts} title={"Product Categories"} />
+      </Grid>
+      <Grid item xs={4}>
+        <ListCard data={ProvinceListCounts} title={"Food, Feed & Beverage"} />
       </Grid>
     </Grid>
   );
