@@ -94,7 +94,7 @@ function Layout() {
         position="fixed"
         open={open}
         sx={{
-          backgroundColor: "transparent",
+          backgroundColor: "white",
           color: "black",
           // zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: 0,
@@ -124,7 +124,9 @@ function Layout() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Outlet />
+        <Box ml={-2} mr={-3}>
+          <Outlet />
+        </Box>
       </Main>
     </Box>
   );

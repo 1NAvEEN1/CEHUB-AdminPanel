@@ -116,7 +116,6 @@ const Login = () => {
               <Link
                 style={{
                   textDecoration: "none",
-                  // color: "inherit",
                   marginLeft: 3,
                   color: "#F47621",
                   fontWeight: 500,
