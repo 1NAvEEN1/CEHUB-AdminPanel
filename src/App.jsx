@@ -12,6 +12,11 @@ const Login = Loadable(lazy(() => import("./pages/Login/Login")));
 const Layout = Loadable(lazy(() => import("./layout")));
 const Overview = Loadable(lazy(() => import("./pages/Dashboard/Overview")));
 const Map = Loadable(lazy(() => import("./pages/Dashboard/Map")));
+const Suppliers = Loadable(lazy(() => import("./pages/Suppliers/Suppliers")));
+const Process = Loadable(lazy(() => import("./pages/Verification/Process")));
+const Verified = Loadable(lazy(() => import("./pages/Verification/Verified")));
+const Rejected = Loadable(lazy(() => import("./pages/Verification/Rejected")));
+const Settings = Loadable(lazy(() => import("./pages/Settings/Settings")));
 const Test = Loadable(lazy(() => import("./pages/Test/Test")));
 
 //--------------------------------------------------------------//
@@ -43,23 +48,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/Suppliers",
-        element: <Overview />,
+        element: <Suppliers />,
       },
       {
         path: "/Verification/Process",
-        element: <Overview />,
+        element: <Process />,
       },
       {
         path: "/Verification/Verified",
-        element: <Overview />,
+        element: <Verified />,
       },
       {
         path: "/Verification/Rejected",
-        element: <Overview />,
+        element: <Rejected />,
       },
       {
         path: "/Settings",
-        element: <Overview />,
+        element: <Settings />,
       },
     ],
   },
