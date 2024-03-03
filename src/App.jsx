@@ -11,6 +11,7 @@ import SuccessMessage from "./components/SuccessMessage/SuccessMessage";
 const Login = Loadable(lazy(() => import("./pages/Login/Login")));
 const Layout = Loadable(lazy(() => import("./layout")));
 const Overview = Loadable(lazy(() => import("./pages/Dashboard/Overview")));
+const Map = Loadable(lazy(() => import("./pages/Dashboard/Map")));
 const Test = Loadable(lazy(() => import("./pages/Test/Test")));
 
 //--------------------------------------------------------------//
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Dashboard/Map",
-        element: <Overview />,
+        element: <Map />,
       },
       {
         path: "/Suppliers",
