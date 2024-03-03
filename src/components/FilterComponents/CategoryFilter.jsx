@@ -23,7 +23,7 @@ export const CategoryFilter = ({ category }) => {
       pl={1}
     >
       <Box>
-        <Typography color={"#000000B3"} fontWeight={500}>
+        <Typography color={"#000000B3"} fontWeight={600}>
           Category : <b>{category}</b>
         </Typography>
       </Box>

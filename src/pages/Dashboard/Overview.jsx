@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import DateFilter from "../../components/FilterComponents/DateFilter";
@@ -120,49 +120,6 @@ const Overview = () => {
     },
   ]);
 
-  const [FoodListCounts, setFoodListCounts] = useState([
-    {
-      name: "Dehydrated foods",
-      count: 175,
-    },
-    {
-      name: "Processed vegetables, fruits",
-      count: 125,
-    },
-    {
-      name: "Fruit juice",
-      count: 115,
-    },
-    {
-      name: "Spices",
-      count: 95,
-    },
-    {
-      name: "Herbal products",
-      count: 91,
-    },
-    {
-      name: "Food, Feed & Beverage",
-      count: 87,
-    },
-    {
-      name: "Electrical and Electronics",
-      count: 65,
-    },
-    {
-      name: "Garments and Textiles",
-      count: 54,
-    },
-    {
-      name: "Gems and Jewellery",
-      count: 23,
-    },
-    {
-      name: "Other",
-      count: 10,
-    },
-  ]);
-
   const [CategoryListCounts, setCategoryListCounts] = useState([
     {
       name: "Tea",
@@ -203,6 +160,75 @@ const Overview = () => {
     {
       name: "Other",
       count: 10,
+    },
+  ]);
+
+  const [FoodListCounts, setFoodListCounts] = useState([
+    {
+      name: "Dehydrated foods",
+      count: 50,
+    },
+    {
+      name: "Processed vegetables, fruits",
+      count: 20,
+    },
+    {
+      name: "Fruit juice",
+      count: 10,
+    },
+    {
+      name: "Processed foods",
+      count: 5,
+    },
+    {
+      name: "Cereals",
+      count: 2,
+    },
+    {
+      name: "Other",
+      count: 1,
+    },
+  ]);
+  const [CoconutListCounts, setCoconutListCounts] = useState([
+    {
+      name: "Coconut water",
+      count: 50,
+    },
+    {
+      name: "King coconut water",
+      count: 20,
+    },
+    {
+      name: "Coconut oil",
+      count: 10,
+    },
+    {
+      name: "Coconut milk ",
+      count: 5,
+    },
+    {
+      name: "Coconut Butter",
+      count: 2,
+    },
+    {
+      name: "Coconut cream",
+      count: 2,
+    },
+    {
+      name: "Coconut flour",
+      count: 2,
+    },
+    {
+      name: "Coconut Jam",
+      count: 1,
+    },
+    {
+      name: "Coconut Chips",
+      count: 1,
+    },
+    {
+      name: "Other",
+      count: 1,
     },
   ]);
 
@@ -276,7 +302,9 @@ const Overview = () => {
         <ListCard data={CategoryListCounts} title={"Product Categories"} />
       </Grid>
       <Grid item xs={4}>
-        <ListCard data={ProvinceListCounts} title={"Food, Feed & Beverage"} />
+        <ListCard data={FoodListCounts} title={"Food, Feed & Beverage"} />
+        <Box mt={2}></Box>
+        <ListCard data={CoconutListCounts} title={"Coconut"} />
       </Grid>
     </Grid>
   );

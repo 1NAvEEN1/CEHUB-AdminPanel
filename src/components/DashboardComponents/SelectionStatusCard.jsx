@@ -76,7 +76,7 @@ export const SelectionStatusCard = ({ data }) => {
         mt={-1}
       >
         <Box>
-          <Typography color={"#000000B3"} fontWeight={500}>
+          <Typography color={"#000000B3"} fontWeight={600}>
             Selection status
           </Typography>
         </Box>

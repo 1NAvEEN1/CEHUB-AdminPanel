@@ -23,7 +23,7 @@ export const SubCategoryFilter  = ({ subCategory }) => {
       pl={1}
     >
       <Box>
-        <Typography color={"#000000B3"} fontWeight={500}>
+        <Typography color={"#000000B3"} fontWeight={600}>
           Sub-category : <b>{subCategory}</b>
         </Typography>
       </Box>

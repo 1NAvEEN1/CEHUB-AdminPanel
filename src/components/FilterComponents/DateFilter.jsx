@@ -27,7 +27,7 @@ const DateFilter = ({ date, setDate, today }) => {
       pl={1}
     >
       <Box>
-        <Typography color={"#000000B3"} fontWeight={500}>
+        <Typography color={"#000000B3"} fontWeight={600}>
           Time : <b>{date === today ? "All-time" : date}</b>
         </Typography>
       </Box>

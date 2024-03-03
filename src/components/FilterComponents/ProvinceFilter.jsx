@@ -23,7 +23,7 @@ export const ProvinceFilter = ({ province }) => {
       pl={1}
     >
       <Box>
-        <Typography color={"#000000B3"} fontWeight={500}>
+        <Typography color={"#000000B3"} fontWeight={600}>
           Province : <b>{province}</b>
         </Typography>
       </Box>
