@@ -1,4 +1,10 @@
-import { Box, Grid, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Grid,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import DateFilter from "../../components/FilterComponents/DateFilter";
@@ -7,6 +13,7 @@ import { SubCategoryFilter } from "../../components/FilterComponents/SubCategory
 import { StatusFilter } from "../../components/FilterComponents/StatusFilter";
 import { ProvinceFilter } from "../../components/FilterComponents/ProvinceFilter";
 import SearchIcon from "@mui/icons-material/Search";
+import SortingSelect from "../../components/SortingSelect/SortingSelect";
 
 const Suppliers = () => {
   const today = dayjs().format("YYYY-MM-DD");
@@ -17,6 +24,8 @@ const Suppliers = () => {
   const [status, setStatus] = useState("All");
   const [province, setProvince] = useState("All");
   const [searchValue, setSearchValue] = useState("");
+
+  const [sorting, setSorting] = useState({ type: "Company name", order: "asc" });
 
   const defaultProps = {
     center: {
@@ -48,7 +57,9 @@ const Suppliers = () => {
         />
       </Grid>
 
-      <Grid item xs={4.8}></Grid>
+      <Grid item xs={4.8} display={"flex"} alignItems={"center"} justifyContent={"end"}>
+        <SortingSelect sorting={sorting} setSorting={setSorting} />
+      </Grid>
       {/* --------------------------Filter Options---------------------------------- */}
 
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
