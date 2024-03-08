@@ -1,4 +1,10 @@
-import { Box, Grid, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Grid,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import DateFilter from "../../components/FilterComponents/DateFilter";
@@ -7,6 +13,8 @@ import { SubCategoryFilter } from "../../components/FilterComponents/SubCategory
 import { StatusFilter } from "../../components/FilterComponents/StatusFilter";
 import { ProvinceFilter } from "../../components/FilterComponents/ProvinceFilter";
 import SearchIcon from "@mui/icons-material/Search";
+import SortingSelect from "../../components/SortingSelect/SortingSelect";
+import SupplierPreviewCard from "../../components/SupplierPreviewCard/SupplierPreviewCard";
 
 const Suppliers = () => {
   const today = dayjs().format("YYYY-MM-DD");
@@ -17,14 +25,98 @@ const Suppliers = () => {
   const [status, setStatus] = useState("All");
   const [province, setProvince] = useState("All");
   const [searchValue, setSearchValue] = useState("");
+  const [sorting, setSorting] = useState({
+    type: "Company name",
+    order: "asc",
+  });
 
-  const defaultProps = {
-    center: {
-      lat: 7.8774222,
-      lng: 80.7003428,
+  const [data, setData] = useState([
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
     },
-    zoom: 9,
-  };
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
+    },
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
+    },
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
+    },
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
+    },
+    {
+      address: "No: 75, 1st Cross street, Negombo road, Ja-ela",
+      name: "Danushka Gamage",
+      contactNumber1: "+94 777 123456",
+      contactNumber2: "+94 112 654789",
+      email: "nceco@gmail.com",
+      businessName: "NC Eco Foods (Pvt) Ltd",
+      products: [
+        {
+          productCategoryId: "Food, Feed & Beverage",
+          productSubCategoryId: "Dehydrated foods",
+        },
+      ],
+    },
+  ]);
+
   return (
     <Grid container spacing={2} width={"100%"}>
       <Grid item xs={7.2}>
@@ -48,7 +140,15 @@ const Suppliers = () => {
         />
       </Grid>
 
-      <Grid item xs={4.8}></Grid>
+      <Grid
+        item
+        xs={4.8}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"end"}
+      >
+        <SortingSelect sorting={sorting} setSorting={setSorting} />
+      </Grid>
       {/* --------------------------Filter Options---------------------------------- */}
 
       <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
@@ -70,7 +170,13 @@ const Suppliers = () => {
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
 
-      <Grid item xs={12}></Grid>
+      {data.map((item, key) => {
+        return (
+          <Grid item xs={12}>
+            <SupplierPreviewCard data={item} />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

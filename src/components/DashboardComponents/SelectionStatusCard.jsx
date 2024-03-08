@@ -80,8 +80,8 @@ export const SelectionStatusCard = ({ data }) => {
             Selection status
           </Typography>
         </Box>
-        <Box sx={{ display: "inline" }}>
-          All{" "}
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography fontWeight={600}>All</Typography>{" "}
           <IconButton onClick={handleClick}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
