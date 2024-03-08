@@ -58,8 +58,7 @@ const SupplierPreviewCard = ({ data }) => {
             >
               <AccountCircleOutlinedIcon
                 fontSize="small"
-                color="action"
-                sx={{ mr: 1 }}
+                sx={{ mr: 1, color: "#4D4D4D" }}
               />
               {data.name}
             </Typography>
@@ -74,8 +73,7 @@ const SupplierPreviewCard = ({ data }) => {
             >
               <LocalPhoneOutlinedIcon
                 fontSize="small"
-                color="action"
-                sx={{ mr: 1 }}
+                sx={{ mr: 1, color: "#4D4D4D" }}
               />
               {data.contactNumber1 + " | " + data.contactNumber2}
             </Typography>
@@ -90,8 +88,7 @@ const SupplierPreviewCard = ({ data }) => {
             >
               <AlternateEmailIcon
                 fontSize="small"
-                color="action"
-                sx={{ mr: 1 }}
+                sx={{ mr: 1, color: "#4D4D4D" }}
               />{" "}
               {data.email}
             </Typography>
@@ -104,7 +101,10 @@ const SupplierPreviewCard = ({ data }) => {
               fontWeight={500}
               fontSize={13}
             >
-              <MailOutlineIcon fontSize="small" color="action" sx={{ mr: 1 }} />{" "}
+              <MailOutlineIcon
+                sx={{ mr: 1, color: "#4D4D4D" }}
+                fontSize="small"
+              />
               {data.address}
             </Typography>
           </Grid>
