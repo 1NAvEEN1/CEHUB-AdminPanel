@@ -172,8 +172,8 @@ const Suppliers = () => {
 
       {data.map((item, key) => {
         return (
-          <Grid item xs={12}>
-            <SupplierPreviewCard data={item} />
+          <Grid item key={key} xs={12}>
+            <SupplierPreviewCard data={item} page={"Suppliers"} />
           </Grid>
         );
       })}

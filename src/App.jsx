@@ -19,6 +19,15 @@ const Rejected = Loadable(lazy(() => import("./pages/Verification/Rejected")));
 const Settings = Loadable(lazy(() => import("./pages/Settings/Settings")));
 const Test = Loadable(lazy(() => import("./pages/Test/Test")));
 
+const VerifyBasicDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/BasicDetails"))
+);
+const VerifyOtherDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/OtherDetails"))
+);
+const VerifyProductDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/ProductDetails"))
+);
 //--------------------------------------------------------------//
 
 const router = createBrowserRouter([
@@ -53,6 +62,18 @@ const router = createBrowserRouter([
       {
         path: "/Verification/Process",
         element: <Process />,
+      },
+      {
+        path: "/Verification/Process/Verify/BasicDetails",
+        element: <VerifyBasicDetails />,
+      },
+      {
+        path: "/Verification/Process/Verify/ProductDetails",
+        element: <VerifyProductDetails />,
+      },
+      {
+        path: "/Verification/Process/Verify/OtherDetails",
+        element: <VerifyOtherDetails />,
       },
       {
         path: "/Verification/Verified",

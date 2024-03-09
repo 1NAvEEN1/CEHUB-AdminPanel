@@ -14,8 +14,10 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { useNavigate } from "react-router-dom";
 
-const SupplierPreviewCard = ({ data }) => {
+const SupplierPreviewCard = ({ data, page }) => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,6 +28,12 @@ const SupplierPreviewCard = ({ data }) => {
   };
 
   const handleOptions = () => {};
+
+  const handleButtonClick = () => {
+    if (page === "Process") {
+      navigate("./Verify/BasicDetails");
+    }
+  };
 
   return (
     <Grid container border={"1px solid #EFF0F6"} borderRadius={3} p={2.5}>
@@ -131,7 +139,7 @@ const SupplierPreviewCard = ({ data }) => {
           </IconButton>
         </Box>
         <Box ml={1}>
-          <Button variant="contained">
+          <Button variant="contained" onClick={handleButtonClick}>
             <Typography>View Profile</Typography>
           </Button>
         </Box>
