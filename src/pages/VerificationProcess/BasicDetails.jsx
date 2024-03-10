@@ -508,7 +508,7 @@ const BasicDetails = () => {
 
       <Grid item xs={12} display={"flex"} alignItems={"end"}>
         <Grid container spacing={2} mt={2}>
-          <Grid item xs={2.4}>
+          <Grid item xs={3} lg={2.4}>
             <Button
               variant="outlined"
               fullWidth
@@ -519,8 +519,18 @@ const BasicDetails = () => {
               </Typography>
             </Button>
           </Grid>
-          <Grid item xs={2.4}></Grid>
-          <Grid item xs={2.4}>
+          <Grid
+            item
+            xs={0}
+            sx={{
+              display: {
+                xs: "none",
+                lg: "flex",
+              },
+            }}
+            lg={2.4}
+          ></Grid>
+          <Grid item xs={3} lg={2.4}>
             <Button
               variant="outlined"
               fullWidth
@@ -531,7 +541,7 @@ const BasicDetails = () => {
               </Typography>
             </Button>
           </Grid>
-          <Grid item xs={2.4}>
+          <Grid item xs={3} lg={2.4}>
             <Button
               variant="outlined"
               fullWidth
@@ -542,7 +552,7 @@ const BasicDetails = () => {
               </Typography>
             </Button>
           </Grid>
-          <Grid item xs={2.4}>
+          <Grid item xs={3} lg={2.4}>
             <Button
               variant="contained"
               fullWidth
