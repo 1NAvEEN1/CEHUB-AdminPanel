@@ -19,6 +19,7 @@
     "@mui/x-data-grid": "^6.4.0",
     "@mui/x-date-pickers": "^6.19.5",
     "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.6.7",
     "dayjs": "^1.11.10",
     "google-map-react": "^2.2.1",
     "papaparse": "^5.4.1",
