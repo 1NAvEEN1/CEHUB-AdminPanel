@@ -33,8 +33,7 @@ const errorShadow = "-1px 1px 8px 5px rgba(255, 0, 0, 0.3)";
 const CustomStyledBox = ({ children, sx = {}, ...rest }) => (
   <Box
     sx={{
-      borderRadius: 3,
-      mt: 3,
+      borderRadius: 2,
       pt: 1,
       pr: 0,
       pb: 1,
@@ -232,7 +231,7 @@ const AddProducts = ({ closeDrawer }) => {
     ];
 
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={2} maxWidth={350}>
         {months.map((month) => (
           <Grid key={month} item xs={3} display="flex" justifyContent="center">
             <Box
@@ -389,28 +388,18 @@ const AddProducts = ({ closeDrawer }) => {
     closeDrawer();
   };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        bgcolor: "#F9FAFB",
-        // borderRadius: 4,
-      }}
-    >
+    <Box>
       <Grid
         container
         sx={{
           minHeight: "90svh",
           p: 2,
-          width: 500,
-          borderRadius: 4,
         }}
       >
+        <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mt={3}>
+          Product or row martial?
+        </Typography>
         <Grid item xs={12}>
-          <Typography textAlign="center" fontWeight={600} mb={2}>
-            Add new product
-          </Typography>
-          <Divider style={{ width: "100%", marginBottom: 25 }} />
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             value={product.productOrRaw.toString()}
@@ -421,105 +410,74 @@ const AddProducts = ({ closeDrawer }) => {
             )}
             name="radio-buttons-group"
           >
-            <Grid container>
-              <Grid item xs={6}>
-                <Typography variant="h5">Product</Typography>
+            <Grid container spacing={5} mt={-3} ml={-2}>
+              <Grid item xs={4}>
+                <Box
+                  maxWidth={250}
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                >
+                  <Typography fontWeight={600} fontSize={16}>
+                    Product
+                  </Typography>{" "}
+                  <FormControlLabel
+                    value="true"
+                    control={<Radio />}
+                    labelPlacement="start"
+                  />
+                </Box>
               </Grid>
-              <Grid item xs={6} display="flex" justifyContent="end" mb={2}>
-                <FormControlLabel
-                  value="true"
-                  control={<Radio />}
-                  labelPlacement="start"
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="h5">Raw Material</Typography>
-              </Grid>
-              <Grid item xs={6} display="flex" justifyContent="end" mb={2}>
-                <FormControlLabel
-                  value="false"
-                  control={<Radio />}
-                  labelPlacement="start"
-                />
+              <Grid item xs={4}>
+                <Box
+                  maxWidth={250}
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                >
+                  <Typography fontWeight={600} fontSize={16}>
+                    Raw material
+                  </Typography>
+                  <FormControlLabel
+                    value="false"
+                    control={<Radio />}
+                    labelPlacement="start"
+                  />
+                </Box>
               </Grid>
             </Grid>
           </RadioGroup>
-
-          <CustomStyledBox
-            sx={{
-              boxShadow: error === "category" ? errorShadow : initialShadow,
-            }}
-          >
-            <Typography variant="b1" fontWeight={500} color="primary" pl={2}>
-              Product category
-            </Typography>
-            <FormControl fullWidth>
-              <Autocomplete
-                value={
-                  categories.find(
-                    (category) => category.id === product.productCategoryId
-                  ) || null
-                }
-                size="small"
-                options={categories}
-                getOptionLabel={(option) => option.nameEnglish}
-                onChange={(_, newValue) => {
-                  handleChange("productCategoryId", newValue ? newValue.id : 0);
-                  setSubCategories([]);
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder={"Select a product category"}
-                    sx={{
-                      ".MuiOutlinedInput-notchedOutline": { border: 0 },
-                      borderRadius: 3,
-                      height: 40,
-                    }}
-                  />
-                )}
-                loading={categoriesLoading} // Add loading prop
-              />
-            </FormControl>
-          </CustomStyledBox>
-
-          {product.productOrRaw && subCategories[0] != 0 && (
-            <>
+          <Grid container spacing={3} mt={1}>
+            <Grid item xs={12} md={6} lg={4}>
               <CustomStyledBox
                 sx={{
-                  boxShadow:
-                    error === "subCategory" ? errorShadow : initialShadow,
+                  boxShadow: error === "category" ? errorShadow : initialShadow,
                 }}
               >
-                <Typography
-                  variant="b1"
-                  fontWeight={500}
-                  color="primary"
-                  pl={2}
-                >
-                  Product sub category
+                <Typography fontWeight={600} color="primary" pl={2}>
+                  Product category
                 </Typography>
                 <FormControl fullWidth>
                   <Autocomplete
                     value={
-                      subCategories.find(
-                        (subCategory) =>
-                          subCategory.id === product.productSubCategoryId
+                      categories.find(
+                        (category) => category.id === product.productCategoryId
                       ) || null
                     }
                     size="small"
-                    options={subCategories}
+                    options={categories}
                     getOptionLabel={(option) => option.nameEnglish}
                     onChange={(_, newValue) => {
                       handleChange(
-                        "productSubCategoryId",
+                        "productCategoryId",
                         newValue ? newValue.id : 0
                       );
+                      setSubCategories([]);
                     }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        placeholder={"Select a sub category"}
+                        placeholder={"Select a product category"}
                         sx={{
                           ".MuiOutlinedInput-notchedOutline": { border: 0 },
                           borderRadius: 3,
@@ -527,45 +485,88 @@ const AddProducts = ({ closeDrawer }) => {
                         }}
                       />
                     )}
-                    disabled={product.productCategoryId === 0}
-                    loading={subCategoriesLoading} // Add loading prop
+                    loading={categoriesLoading} // Add loading prop
                   />
                 </FormControl>
               </CustomStyledBox>
-            </>
-          )}
-
-          {/* <CustomStyledBox
-            sx={{
-              boxShadow: error === "name" ? errorShadow : initialShadow,
-            }}
-          >
-            <Typography color="primary" pl={2}>
-              {t("translation:AddProduct:name")}
-            </Typography>
-            <TextField
-              size="small"
-              sx={{
-                boxShadow: "none",
-                ".MuiOutlinedInput-notchedOutline": { border: 0 },
-              }}
-              placeholder={t("translation:AddProduct:productName")}
-              fullWidth
-              value={product.name}
-              onChange={(e) => handleChange("name", e.target.value)}
-            ></TextField>
-          </CustomStyledBox> */}
+            </Grid>{" "}
+            {product.productOrRaw && subCategories[0] != 0 && (
+              <Grid item xs={12} md={6} lg={4}>
+                <CustomStyledBox
+                  sx={{
+                    boxShadow:
+                      error === "subCategory" ? errorShadow : initialShadow,
+                  }}
+                >
+                  <Typography fontWeight={600} color="primary" pl={2}>
+                    Sub category
+                  </Typography>
+                  <FormControl fullWidth>
+                    <Autocomplete
+                      value={
+                        subCategories.find(
+                          (subCategory) =>
+                            subCategory.id === product.productSubCategoryId
+                        ) || null
+                      }
+                      size="small"
+                      options={subCategories}
+                      getOptionLabel={(option) => option.nameEnglish}
+                      onChange={(_, newValue) => {
+                        handleChange(
+                          "productSubCategoryId",
+                          newValue ? newValue.id : 0
+                        );
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          placeholder={"Select a sub category"}
+                          sx={{
+                            ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                            borderRadius: 3,
+                            height: 40,
+                          }}
+                        />
+                      )}
+                      disabled={product.productCategoryId === 0}
+                      loading={subCategoriesLoading} // Add loading prop
+                    />
+                  </FormControl>
+                </CustomStyledBox>
+              </Grid>
+            )}
+            <Grid item xs={12} md={6} lg={4}>
+              <CustomStyledBox
+                sx={{
+                  boxShadow: error === "name" ? errorShadow : initialShadow,
+                  height: "100%",
+                }}
+              >
+                <Typography color="primary" pl={2} fontWeight={600}>
+                  Product name
+                </Typography>
+                <TextField
+                  size="small"
+                  sx={{
+                    boxShadow: "none",
+                    ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                  }}
+                  placeholder="Product name"
+                  fullWidth
+                  value={product.name}
+                  onChange={(e) => handleChange("name", e.target.value)}
+                ></TextField>
+              </CustomStyledBox>
+            </Grid>
+          </Grid>
         </Grid>
 
-        {/* <Grid item xs={12} mt={3}>
-          <Typography fontWeight={600}>
-            {t("translation:AddProduct:pricing")}
-          </Typography>
+        <Grid item xs={12} mt={3}>
+          <Typography fontWeight={600}>Price range</Typography>
           <Typography fontSize={"13px"} mt={1}>
-            <Trans i18nKey="AddProduct.text1">
-              Please select the units of quantity when adding price. <br />
-              (For example: per kg, per liter, per gram, per one piece, etc.)
-            </Trans>
+            Please select the units of quantity when adding price. <br />
+            (For example: per kg, per liter, per gram, per one piece, etc.)
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -596,12 +597,11 @@ const AddProducts = ({ closeDrawer }) => {
                   }}
                 ></TextField>
               </CustomStyledBox>
-            </Grid>
-            <Grid item xs={12} mt={-2}>
               <CustomStyledBox
                 height={85}
                 sx={{
                   boxShadow: error === "unit" ? errorShadow : initialShadow,
+                  maxWidth:250
                 }}
               >
                 <Typography color="primary" pl={2} mb={0}>
@@ -661,7 +661,7 @@ const AddProducts = ({ closeDrawer }) => {
               </CustomStyledBox>
             </Grid>
           </Grid>
-        </Grid> */}
+        </Grid>
 
         {/*  <Grid item xs={12} mt={3}>
           <Typography fontWeight={600}>
@@ -841,10 +841,9 @@ const AddProducts = ({ closeDrawer }) => {
         </Grid>
 */}
         <Grid item xs={12} mt={3}>
-          <Typography variant="h6" fontWeight={700} mt={2} mb={2}>
+          <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mt={3}>
             Supply Frequency?
           </Typography>
-          <Divider sx={{ mb: 3 }} />
           <FormControl fullWidth sx={{ pl: 2, pr: 2, mb: -2 }}>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
@@ -855,46 +854,65 @@ const AddProducts = ({ closeDrawer }) => {
               )}
               name="radio-buttons-group"
             >
-              <Grid container>
-                <Grid item xs={9}>
-                  <Typography variant="h5">Monthly</Typography>
+              <Grid container spacing={5} mt={-3} ml={-2}>
+                <Grid item xs={4}>
+                  <Box
+                    maxWidth={250}
+                    display={"flex"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
+                  >
+                    <Typography fontWeight={600} fontSize={16}>
+                      Monthly
+                    </Typography>{" "}
+                    <FormControlLabel
+                      value="true"
+                      control={<Radio />}
+                      labelPlacement="start"
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={3} display="flex" justifyContent="end" mb={2}>
-                  <FormControlLabel
-                    value="true"
-                    control={<Radio />}
-                    labelPlacement="start"
-                  />
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="h5">Custom</Typography>
-                </Grid>
-                <Grid item xs={3} display="flex" justifyContent="end" mb={2}>
-                  <FormControlLabel
-                    value="false"
-                    control={<Radio />}
-                    labelPlacement="start"
-                  />
+                <Grid item xs={4}>
+                  <Box
+                    maxWidth={250}
+                    display={"flex"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
+                  >
+                    <Typography fontWeight={600} fontSize={16}>
+                      Custom
+                    </Typography>
+                    <FormControlLabel
+                      value="false"
+                      control={<Radio />}
+                      labelPlacement="start"
+                    />
+                  </Box>
                 </Grid>
               </Grid>
             </RadioGroup>
           </FormControl>
           {!product.supplyFrequency && (
             <>
-              <Typography fontWeight={700} mt={2} mb={2}>
-                Select a month range
+              <Typography
+                color={"#4D4D4D"}
+                fontWeight={500}
+                fontSize={16}
+                mt={3}
+                mb={2}
+              >
+                Select a month range :
               </Typography>
               {renderMonthSelection()}
             </>
           )}
-          <Divider sx={{ mt: 3 }} />
         </Grid>
 
         <Grid item xs={12} mt={3}>
-          <Typography fontWeight={700} mt={2} mb={2}>
+          <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mt={3}>
             Other Product Details
           </Typography>
-          <Typography fontSize={"13px"} mt={1} mb={1}>
+          <Typography fontSize={"13px"} mt={1} mb={1} color={"#4D4D4D"}>
             (Any additional relevant details about the product, such as
             expiration details, packaging sizes, etc)
           </Typography>
@@ -907,38 +925,44 @@ const AddProducts = ({ closeDrawer }) => {
             onChange={(e) => handleChange("description", e.target.value)}
           ></TextField>
         </Grid>
-        <Grid item xs={12} mt={3}>
+        <Grid
+          item
+          xs={12}
+          mt={3}
+          display={"flex"}
+          justifyContent={"end"}
+          gap={2}
+        >
           <Button
-            variant="contained"
             size="large"
-            fullWidth
             sx={{
               height: 50,
-              borderRadius: 3,
-              color: "white",
+              borderRadius: 1,
+              color: "primary.main",
               mt: 2,
+              width: 170,
             }}
-            onClick={() => save()}
+            variant="outlined"
+            onClick={() => Discard()}
           >
-            <Typography textTransform="capitalize" variant="h6">
-              Save Product
+            <Typography textTransform="capitalize" fontWeight={600}>
+              Discard
             </Typography>
           </Button>
           <Button
+            variant="contained"
             size="large"
-            fullWidth
             sx={{
               height: 50,
-              borderRadius: 3,
-              color: "grey",
+              borderRadius: 1,
+              color: "white",
               mt: 2,
+              width: 170,
             }}
-            variant="outlined"
-            color="secondary"
-            onClick={() => Discard()}
+            onClick={() => save()}
           >
-            <Typography textTransform="capitalize" variant="h6">
-              Discard
+            <Typography textTransform="capitalize" fontWeight={600}>
+              Save Product
             </Typography>
           </Button>
         </Grid>

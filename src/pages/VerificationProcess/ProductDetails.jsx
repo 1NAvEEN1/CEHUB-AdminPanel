@@ -349,7 +349,14 @@ const ProductDetails = () => {
         onClose={() => setIsDrawerOpen(false)}
         aria-labelledby="add-product-modal"
         fullWidth
-        maxWidth="md"
+        maxWidth="lg"
+        PaperProps={{
+          style: {
+            backgroundColor: "#F9FAFB",
+            // boxShadow: "none",
+            padding:-5
+          },
+        }}
         slotProps={{
           backdrop: {
             sx: {
@@ -362,8 +369,7 @@ const ProductDetails = () => {
           <Box
             sx={{
               bgcolor: "#F9FAFB",
-              borderRadius: 4,
-              p: 4,
+              m:-2
             }}
           >
             <AddProducts />
