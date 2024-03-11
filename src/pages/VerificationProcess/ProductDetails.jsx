@@ -17,9 +17,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import AddProducts from "../../components/AddProduct/AddProducts";
 
 const ProductDetails = () => {
   const dialogContentRef = useRef(null);
+  const drawerContentRef = useRef(null);
   const navigate = useNavigate();
   const [verified, setVerified] = useState(false);
   const [products, setProducts] = useState([
@@ -27,7 +29,8 @@ const ProductDetails = () => {
       productCategoryId: 0,
       productSubCategoryId: 0,
       name: "string",
-      description: "string",
+      description:
+        "Grade A 1kg Rs.2,500 Grade B 1kg Rs.2,000 can supply 100kg per week. packaging can be done any size. we do not deliver. ",
       price: 0,
       supplyQuantity: 0,
       unitType: 0,
@@ -39,7 +42,8 @@ const ProductDetails = () => {
       productCategoryId: 0,
       productSubCategoryId: 0,
       name: "string",
-      description: "string",
+      description:
+        "Grade A 1kg Rs.2,500 Grade B 1kg Rs.2,000 can supply 100kg per week. packaging can be done any size. we do not deliver. ",
       price: 0,
       supplyQuantity: 0,
       unitType: 0,
@@ -51,7 +55,8 @@ const ProductDetails = () => {
       productCategoryId: 0,
       productSubCategoryId: 0,
       name: "string",
-      description: "string",
+      description:
+        "Grade A 1kg Rs.2,500 Grade B 1kg Rs.2,000 can supply 100kg per week. packaging can be done any size. we do not deliver. ",
       price: 0,
       supplyQuantity: 0,
       unitType: 0,
@@ -63,7 +68,8 @@ const ProductDetails = () => {
       productCategoryId: 0,
       productSubCategoryId: 0,
       name: "string",
-      description: "string",
+      description:
+        "Grade A 1kg Rs.2,500 Grade B 1kg Rs.2,000 can supply 100kg per week. packaging can be done any size. we do not deliver. ",
       price: 0,
       supplyQuantity: 0,
       unitType: 0,
@@ -75,7 +81,8 @@ const ProductDetails = () => {
       productCategoryId: 0,
       productSubCategoryId: 0,
       name: "string",
-      description: "string",
+      description:
+        "Grade A 1kg Rs.2,500 Grade B 1kg Rs.2,000 can supply 100kg per week. packaging can be done any size. we do not deliver. ",
       price: 0,
       supplyQuantity: 0,
       unitType: 0,
@@ -101,6 +108,9 @@ const ProductDetails = () => {
   const handleSaveButtonClick = () => {
     navigate("./../OtherDetails");
   };
+
+  //------------Handle product drawer---------------------------------------//
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   //------------handle edit delete function --------------------------------//
   const [openDelete, setOpenDelete] = useState(false);
@@ -148,6 +158,7 @@ const ProductDetails = () => {
                     mt: 2,
                     p: 3,
                     bgcolor: "#FFFFFF",
+                    minHeight: 250,
                   }}
                 >
                   <Grid container>
@@ -191,9 +202,14 @@ const ProductDetails = () => {
                       </IconButton>
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography mt={product?.description ? 2 : 0}>
-                        {product?.description}
+                      <Typography
+                        mt={product?.description ? 2 : 0}
+                        fontWeight={500}
+                        fontSize={16}
+                      >
+                        Product Description
                       </Typography>
+                      <Typography mt={1}>{product?.description}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -202,7 +218,11 @@ const ProductDetails = () => {
           </Grid>
 
           <Grid item xs={12} display={"flex"} justifyContent={"center"} mt={4}>
-            <Button variant="outlined" sx={{ width: 250, height: 50 }}>
+            <Button
+              variant="outlined"
+              sx={{ width: 250, height: 50 }}
+              onClick={() => setIsDrawerOpen(true)}
+            >
               <Typography fontWeight={600} fontSize={14}>
                 Add Product
               </Typography>
@@ -320,6 +340,33 @@ const ProductDetails = () => {
             >
               Yes
             </Button>
+          </Box>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        aria-labelledby="add-product-modal"
+        fullWidth
+        maxWidth="md"
+        slotProps={{
+          backdrop: {
+            sx: {
+              background: "rgba(0,0,0,0.5)",
+            },
+          },
+        }}
+      >
+        <DialogContent ref={dialogContentRef}>
+          <Box
+            sx={{
+              bgcolor: "#F9FAFB",
+              borderRadius: 4,
+              p: 4,
+            }}
+          >
+            <AddProducts />
           </Box>
         </DialogContent>
       </Dialog>
