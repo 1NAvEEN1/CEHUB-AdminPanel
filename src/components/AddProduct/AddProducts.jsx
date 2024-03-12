@@ -562,17 +562,16 @@ const AddProducts = ({ closeDrawer }) => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} mt={3}>
-          <Typography fontWeight={600}>Price range</Typography>
-          <Typography fontSize={"13px"} mt={1}>
-            Please select the units of quantity when adding price. <br />
-            (For example: per kg, per liter, per gram, per one piece, etc.)
+        <Grid item xs={12} mt={5}>
+          <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mb={2}>
+            Price range
           </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
+          <Grid container>
+            <Grid item xs={12} display={"flex"} gap={3}>
               <CustomStyledBox
                 sx={{
                   boxShadow: error === "price" ? errorShadow : initialShadow,
+                  maxWidth: 200,
                 }}
               >
                 <Typography color="primary" pl={2}>
@@ -587,7 +586,6 @@ const AddProducts = ({ closeDrawer }) => {
                     pr: 2,
                   }}
                   placeholder="0000"
-                  fullWidth
                   type="number"
                   inputProps={{ style: { fontWeight: "bold" } }}
                   value={product.price}
@@ -598,66 +596,101 @@ const AddProducts = ({ closeDrawer }) => {
                 ></TextField>
               </CustomStyledBox>
               <CustomStyledBox
-                height={85}
                 sx={{
                   boxShadow: error === "unit" ? errorShadow : initialShadow,
-                  maxWidth:250
+                  width: 160,
                 }}
               >
                 <Typography color="primary" pl={2} mb={0}>
                   Quantity unit
                 </Typography>
-                <Grid container>
-                  <Grid item xs={5} mb={3}>
-                    <TextField
-                      size="small"
-                      sx={{
-                        boxShadow: "none",
-                        ".MuiOutlinedInput-notchedOutline": { border: 0 },
-                        pl: 2,
-                      }}
-                      placeholder="00"
-                      fullWidth
-                      type="number"
-                      inputProps={{
-                        style: { fontWeight: "bold" },
-                      }}
-                      value={product.supplyQuantity}
-                      onChange={(e) => {
-                        const value = Math.max(0, e.target.value);
-                        handleChange("supplyQuantity", value);
-                      }}
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={7} mt={0.5}>
-                    <FormControl fullWidth>
-                      <Select
-                        id="demo-simple-select"
-                        sx={{
-                          boxShadow: "none",
-                          ".MuiOutlinedInput-notchedOutline": { border: 0 },
-                          borderRadius: 3,
-                          height: 30,
-                          textAlign: "center",
-                          pl: 2,
-                        }}
-                        fullWidth
-                        value={product.unitType}
-                        onChange={(e) =>
-                          handleChange("unitType", e.target.value)
-                        }
-                      >
-                        <MenuItem value={0}>Kilogram (kg)</MenuItem>
-                        <MenuItem value={1}>Gram (g)</MenuItem>
-                        <MenuItem value={2}>Milligram (mg)</MenuItem>
-                        <MenuItem value={3}>Milliliter (ml)</MenuItem>
-                        <MenuItem value={4}>Liter (l)</MenuItem>
-                        <MenuItem value={5}>Packet</MenuItem>
-                        <MenuItem value={6}>Unit</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                </Grid>
+                <FormControl fullWidth>
+                  <Select
+                    sx={{
+                      boxShadow: "none",
+                      ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                      borderRadius: 1,
+                    }}
+                    size="small"
+                    value={product.unitType}
+                    onChange={(e) => handleChange("unitType", e.target.value)}
+                  >
+                    <MenuItem value={0}>Kilogram (kg)</MenuItem>
+                    <MenuItem value={1}>Gram (g)</MenuItem>
+                    <MenuItem value={2}>Milligram (mg)</MenuItem>
+                    <MenuItem value={3}>Milliliter (ml)</MenuItem>
+                    <MenuItem value={4}>Liter (l)</MenuItem>
+                    <MenuItem value={5}>Packet</MenuItem>
+                    <MenuItem value={6}>Unit</MenuItem>
+                  </Select>
+                </FormControl>
+              </CustomStyledBox>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} mt={5}>
+          <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mb={2}>
+            Monthly Supply Quantity & MOQ
+          </Typography>
+          <Grid container>
+            <Grid item xs={12} display={"flex"} gap={3}>
+              <CustomStyledBox
+                sx={{
+                  boxShadow: error === "price" ? errorShadow : initialShadow,
+                  maxWidth: 180,
+                }}
+              >
+                <Typography color="primary" pl={2}>
+                  Quantity
+                </Typography>
+                <TextField
+                  size="small"
+                  sx={{
+                    boxShadow: "none",
+                    ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                    pl: 2,
+                    pr: 2,
+                  }}
+                  placeholder="00"
+                  type="number"
+                  inputProps={{
+                    style: { fontWeight: "bold" },
+                  }}
+                  value={product.supplyQuantity}
+                  onChange={(e) => {
+                    const value = Math.max(0, e.target.value);
+                    handleChange("supplyQuantity", value);
+                  }}
+                ></TextField>
+              </CustomStyledBox>
+              <CustomStyledBox
+                sx={{
+                  boxShadow: error === "unit" ? errorShadow : initialShadow,
+                  width: 180,
+                }}
+              >
+                <Typography color="primary" pl={2} mb={0}>
+                  MOQ
+                </Typography>
+                <TextField
+                  size="small"
+                  sx={{
+                    boxShadow: "none",
+                    ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                    pl: 2,
+                    pr: 2,
+                  }}
+                  placeholder="00"
+                  type="number"
+                  inputProps={{
+                    style: { fontWeight: "bold" },
+                  }}
+                  value={product.monthlySupplyQuantity}
+                  onChange={(e) => {
+                    const value = Math.max(0, e.target.value);
+                    handleChange("monthlySupplyQuantity", value);
+                  }}
+                ></TextField>
               </CustomStyledBox>
             </Grid>
           </Grid>

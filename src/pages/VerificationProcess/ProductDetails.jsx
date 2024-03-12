@@ -117,7 +117,7 @@ const ProductDetails = () => {
   const [deleteIndex, setDeleteIndex] = useState(0);
   const handleEditClick = (index) => {
     // dispatch(setSelectedProductIndex(index));
-    // setIsDrawerOpen(true);
+    setIsDrawerOpen(true);
   };
 
   const handleDeleteClick = () => {
@@ -146,22 +146,19 @@ const ProductDetails = () => {
         </Typography>
         <Grid container>
           <Grid item xs={12} mt={2}>
-            <Grid container gap={3}>
+            <Grid container>
               {products.map((product, index) => (
-                <Grid
-                  item
-                  xs={3.8}
-                  key={index}
-                  sx={{
-                    boxShadow: "0px 3px 8px 4px rgba(0, 0, 0, 0.05)",
-                    borderRadius: 1,
-                    mt: 2,
-                    p: 3,
-                    bgcolor: "#FFFFFF",
-                    minHeight: 250,
-                  }}
-                >
-                  <Grid container>
+                <Grid item sx={12} md={6} lg={4} key={index} p={1}>
+                  <Grid
+                    container
+                    sx={{
+                      boxShadow: "0px 3px 8px 4px rgba(0, 0, 0, 0.05)",
+                      borderRadius: 1,
+                      p: 3,
+                      bgcolor: "#FFFFFF",
+                      minHeight: 250,
+                    }}
+                  >
                     <Grid item xs={9}>
                       {product.productOrRaw ? (
                         <>
@@ -354,7 +351,7 @@ const ProductDetails = () => {
           style: {
             backgroundColor: "#F9FAFB",
             // boxShadow: "none",
-            padding:-5
+            padding: -5,
           },
         }}
         slotProps={{
@@ -369,10 +366,10 @@ const ProductDetails = () => {
           <Box
             sx={{
               bgcolor: "#F9FAFB",
-              m:-2
+              m: -2,
             }}
           >
-            <AddProducts />
+            <AddProducts closeDrawer={() => setIsDrawerOpen(false)} />
           </Box>
         </DialogContent>
       </Dialog>
