@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddProducts from "../../components/AddProduct/AddProducts";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const ProductDetails = () => {
   const dialogContentRef = useRef(null);
@@ -362,11 +363,19 @@ const ProductDetails = () => {
           },
         }}
       >
+        <DialogTitle>
+          <Box display={"flex"} justifyContent={"end"} mt={-3} mr={-3}>
+            <IconButton size="small" onClick={() => setIsDrawerOpen(false)}>
+              <HighlightOffIcon fontSize="large" />
+            </IconButton>
+          </Box>
+        </DialogTitle>
         <DialogContent ref={dialogContentRef}>
           <Box
             sx={{
               bgcolor: "#F9FAFB",
-              m: -2,
+              mt: -2,
+              mb: -2,
             }}
           >
             <AddProducts closeDrawer={() => setIsDrawerOpen(false)} />

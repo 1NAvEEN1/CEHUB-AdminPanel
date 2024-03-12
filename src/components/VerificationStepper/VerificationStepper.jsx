@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import CheckIcon from "@mui/icons-material/Check";
 
 const VerificationStepper = ({ currentStep }) => {
   const Stepper = ({ title, step }) => {
@@ -21,11 +22,13 @@ const VerificationStepper = ({ currentStep }) => {
             sx={{
               width: 40,
               height: 40,
-              bgcolor: "white",
+              bgcolor: currentStep > step ? "#2FB60D" : "white",
               borderRadius: "50%",
               border:
                 currentStep === step
                   ? "1px solid #F47621"
+                  : currentStep > step
+                  ? "1px solid #2FB60D"
                   : "1px solid #B2C0D1",
               display: "flex",
               justifyContent: "center",
@@ -36,8 +39,16 @@ const VerificationStepper = ({ currentStep }) => {
               fontSize={32}
               fontWeight={500}
               color={currentStep === step ? "#F47621" : "#B2C0D1"}
+              display={currentStep > step ? "none" : "block"}
             >
               {step}
+            </Typography>
+            <Typography
+              color="white"
+              display={currentStep > step ? "block" : "none"}
+              pt={0.5}
+            >
+              <CheckIcon fontSize="large" />
             </Typography>
           </Box>
         </Grid>

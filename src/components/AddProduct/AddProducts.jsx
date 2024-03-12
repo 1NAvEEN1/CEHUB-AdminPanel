@@ -396,7 +396,7 @@ const AddProducts = ({ closeDrawer }) => {
           p: 2,
         }}
       >
-        <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16} mt={3}>
+        <Typography color={"#4D4D4D"} fontWeight={500} fontSize={16}>
           Product or row martial?
         </Typography>
         <Grid item xs={12}>
