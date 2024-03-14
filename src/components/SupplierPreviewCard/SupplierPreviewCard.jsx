@@ -29,7 +29,7 @@ const SupplierPreviewCard = ({ data, page }) => {
 
   const handleOptions = (action) => {
     if (action === "View Profile") {
-      navigate(`/ViewProfile/${234}`);
+      navigate(`/CEHUB-AdminPanel/ViewProfile/${234}`);
     }
   };
 
@@ -37,7 +37,7 @@ const SupplierPreviewCard = ({ data, page }) => {
     if (page === "Process") {
       navigate("./Verify/BasicDetails");
     } else if (action === "View Profile") {
-      navigate(`/ViewProfile/${234}`);
+      navigate(`/CEHUB-AdminPanel/ViewProfile/${234}`);
     }
   };
 

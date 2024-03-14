@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         element: <Suppliers />,
       },
       {
-        path: "/CEHUB-AdminPanel/CEHUB-AdminPanel/Verification/Process",
+        path: "/CEHUB-AdminPanel/Verification/Process",
         element: <Process />,
       },
       {
