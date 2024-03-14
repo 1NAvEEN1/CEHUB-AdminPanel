@@ -27,11 +27,17 @@ const SupplierPreviewCard = ({ data, page }) => {
     setAnchorEl(null);
   };
 
-  const handleOptions = () => {};
+  const handleOptions = (action) => {
+    if (action === "View Profile") {
+      navigate(`/ViewProfile/${234}`);
+    }
+  };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (action) => {
     if (page === "Process") {
       navigate("./Verify/BasicDetails");
+    } else if (action === "View Profile") {
+      navigate(`/ViewProfile/${234}`);
     }
   };
 
@@ -139,16 +145,37 @@ const SupplierPreviewCard = ({ data, page }) => {
           </IconButton>
         </Box>
         <Box ml={1}>
-          <Button variant="contained" onClick={handleButtonClick}>
-            <Typography>View Profile</Typography>
+          <Button
+            variant="contained"
+            onClick={() =>
+              handleButtonClick(
+                page === "Process" ? "Verify Profile" : "View Profile"
+              )
+            }
+          >
+            <Typography>
+              {page === "Process" ? "Verify Profile" : "View Profile"}
+            </Typography>
           </Button>
         </Box>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={() => handleOptions()}>
-            <Typography>Option 1</Typography>
+          <MenuItem
+            sx={{ display: page !== "Process" ? "none" : "block" }}
+            onClick={() => handleOptions("View Profile")}
+          >
+            <Typography>View Profile</Typography>
           </MenuItem>
-          <MenuItem onClick={() => handleOptions()}>
-            <Typography>Option 2</Typography>
+          <MenuItem
+            sx={{ display: page === "Process" ? "none" : "block" }}
+            onClick={() => handleOptions("Verify Profile")}
+          >
+            <Typography>Verify Profile</Typography>
+          </MenuItem>
+          <MenuItem
+            sx={{ display: page === "Reject" ? "none" : "block" }}
+            onClick={() => handleOptions("Reject Profile")}
+          >
+            <Typography>Reject Profile</Typography>
           </MenuItem>
         </Menu>
       </Grid>

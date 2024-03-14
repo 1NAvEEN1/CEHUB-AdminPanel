@@ -17,6 +17,7 @@ const Process = Loadable(lazy(() => import("./pages/Verification/Process")));
 const Verified = Loadable(lazy(() => import("./pages/Verification/Verified")));
 const Rejected = Loadable(lazy(() => import("./pages/Verification/Rejected")));
 const Settings = Loadable(lazy(() => import("./pages/Settings/Settings")));
+const ViewProfile = Loadable(lazy(() => import("./pages/ViewProfile/ViewProfile")));
 const Test = Loadable(lazy(() => import("./pages/Test/Test")));
 
 const VerifyBasicDetails = Loadable(
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/Verification/Rejected",
         element: <Rejected />,
+      },
+      {
+        path: "/ViewProfile/:id",
+        element: <ViewProfile />,
       },
       {
         path: "/Settings",
