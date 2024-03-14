@@ -19,10 +19,7 @@ const PageSwitchButton = ({ currentUrl }) => {
 
   const [displayingPages, setDisplayingPages] = useState([]);
 
-  const [selectedPage, setSelectedPage] = useState("");
-
   const handleItemClick = (itemPath) => {
-    setSelectedPage(itemPath);
     navigate(`.${itemPath}`);
   };
 
@@ -34,8 +31,6 @@ const PageSwitchButton = ({ currentUrl }) => {
     } else {
       setDisplayingPages([]);
     }
-
-    setSelectedPage(currentUrl);
   }, [currentUrl]);
 
   const Buttons = ({ page }) => {
@@ -43,8 +38,14 @@ const PageSwitchButton = ({ currentUrl }) => {
       <Grid
         item
         sx={{
-          bgcolor: page.path === selectedPage ? "white" : "transparent",
-          color: page.path === selectedPage ? "#F47621" : "inherit",
+          bgcolor:
+            currentUrl.split("/")[2] === page.path.split("/")[2]
+              ? "white"
+              : "transparent",
+          color:
+            currentUrl.split("/")[2] === page.path.split("/")[2]
+              ? "#F47621"
+              : "inherit",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

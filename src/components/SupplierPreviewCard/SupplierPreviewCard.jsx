@@ -14,8 +14,10 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { useNavigate } from "react-router-dom";
 
-const SupplierPreviewCard = ({ data }) => {
+const SupplierPreviewCard = ({ data, page }) => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,7 +27,19 @@ const SupplierPreviewCard = ({ data }) => {
     setAnchorEl(null);
   };
 
-  const handleOptions = () => {};
+  const handleOptions = (action) => {
+    if (action === "View Profile") {
+      navigate(`/ViewProfile/${234}`);
+    }
+  };
+
+  const handleButtonClick = (action) => {
+    if (page === "Process") {
+      navigate("./Verify/BasicDetails");
+    } else if (action === "View Profile") {
+      navigate(`/ViewProfile/${234}`);
+    }
+  };
 
   return (
     <Grid container border={"1px solid #EFF0F6"} borderRadius={3} p={2.5}>
@@ -131,16 +145,37 @@ const SupplierPreviewCard = ({ data }) => {
           </IconButton>
         </Box>
         <Box ml={1}>
-          <Button variant="contained">
-            <Typography>View Profile</Typography>
+          <Button
+            variant="contained"
+            onClick={() =>
+              handleButtonClick(
+                page === "Process" ? "Verify Profile" : "View Profile"
+              )
+            }
+          >
+            <Typography>
+              {page === "Process" ? "Verify Profile" : "View Profile"}
+            </Typography>
           </Button>
         </Box>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={() => handleOptions()}>
-            <Typography>Option 1</Typography>
+          <MenuItem
+            sx={{ display: page !== "Process" ? "none" : "block" }}
+            onClick={() => handleOptions("View Profile")}
+          >
+            <Typography>View Profile</Typography>
           </MenuItem>
-          <MenuItem onClick={() => handleOptions()}>
-            <Typography>Option 2</Typography>
+          <MenuItem
+            sx={{ display: page === "Process" ? "none" : "block" }}
+            onClick={() => handleOptions("Verify Profile")}
+          >
+            <Typography>Verify Profile</Typography>
+          </MenuItem>
+          <MenuItem
+            sx={{ display: page === "Reject" ? "none" : "block" }}
+            onClick={() => handleOptions("Reject Profile")}
+          >
+            <Typography>Reject Profile</Typography>
           </MenuItem>
         </Menu>
       </Grid>

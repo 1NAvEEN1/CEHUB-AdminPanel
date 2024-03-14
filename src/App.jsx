@@ -17,8 +17,18 @@ const Process = Loadable(lazy(() => import("./pages/Verification/Process")));
 const Verified = Loadable(lazy(() => import("./pages/Verification/Verified")));
 const Rejected = Loadable(lazy(() => import("./pages/Verification/Rejected")));
 const Settings = Loadable(lazy(() => import("./pages/Settings/Settings")));
+const ViewProfile = Loadable(lazy(() => import("./pages/ViewProfile/ViewProfile")));
 const Test = Loadable(lazy(() => import("./pages/Test/Test")));
 
+const VerifyBasicDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/BasicDetails"))
+);
+const VerifyOtherDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/OtherDetails"))
+);
+const VerifyProductDetails = Loadable(
+  lazy(() => import("./pages/VerificationProcess/ProductDetails"))
+);
 //--------------------------------------------------------------//
 
 const router = createBrowserRouter([
@@ -51,8 +61,20 @@ const router = createBrowserRouter([
         element: <Suppliers />,
       },
       {
-        path: "/CEHUB-AdminPanel/Verification/Process",
+        path: "/CEHUB-AdminPanel/CEHUB-AdminPanel/Verification/Process",
         element: <Process />,
+      },
+      {
+        path: "/CEHUB-AdminPanel/Verification/Process/Verify/BasicDetails",
+        element: <VerifyBasicDetails />,
+      },
+      {
+        path: "/CEHUB-AdminPanel/Verification/Process/Verify/ProductDetails",
+        element: <VerifyProductDetails />,
+      },
+      {
+        path: "/CEHUB-AdminPanel/Verification/Process/Verify/OtherDetails",
+        element: <VerifyOtherDetails />,
       },
       {
         path: "/CEHUB-AdminPanel/Verification/Verified",
@@ -61,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: "/CEHUB-AdminPanel/Verification/Rejected",
         element: <Rejected />,
+      },
+      {
+        path: "/CEHUB-AdminPanel/ViewProfile/:id",
+        element: <ViewProfile />,
+      },
+      {
+        path: "/CEHUB-AdminPanel/ViewProfile/:id",
+        element: <ViewProfile />,
       },
       {
         path: "/CEHUB-AdminPanel/Settings",

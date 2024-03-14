@@ -1,10 +1,4 @@
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Grid, InputAdornment, TextField } from "@mui/material";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import DateFilter from "../../components/FilterComponents/DateFilter";
@@ -172,8 +166,8 @@ const Suppliers = () => {
 
       {data.map((item, key) => {
         return (
-          <Grid item xs={12}>
-            <SupplierPreviewCard data={item} />
+          <Grid item key={key} xs={12}>
+            <SupplierPreviewCard data={item} page={"Suppliers"} />
           </Grid>
         );
       })}
