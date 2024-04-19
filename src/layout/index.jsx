@@ -96,7 +96,7 @@ function Layout() {
           color: "black",
           // zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: 0,
-          pr: 2,
+          pr: { md: 2, xs: 0 },
         }}
       >
         <Header setOpen={setOpen} open={open} currentUrl={currentUrl} />
@@ -135,7 +135,18 @@ function Layout() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Box ml={-2} mr={-3}>
+        <Box
+          ml={-2}
+          mr={-3}
+          pt={{
+            md: 0,
+            xs:
+              currentUrl.split("/")[1] == "Dashboard" ||
+              currentUrl.split("/")[1] == "Verification"
+                ? 7
+                : 0,
+          }}
+        >
           <Outlet />
         </Box>
       </Main>

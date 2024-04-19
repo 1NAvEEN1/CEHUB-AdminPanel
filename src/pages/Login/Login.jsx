@@ -50,15 +50,16 @@ const Login = () => {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
+      p={2}
     >
       <form onSubmit={handleSubmit(handleLogin)}>
         <Grid
           container
-          maxWidth={400}
           sx={{
             boxShadow: 7,
             borderRadius: 3,
             p: 2,
+            maxWidth: 400,
           }}
         >
           <Grid item xs={12} display={"flex"} justifyContent={"center"}>
