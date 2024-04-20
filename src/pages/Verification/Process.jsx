@@ -119,7 +119,7 @@ const Process = () => {
 
   return (
     <Grid container spacing={2} width={"100%"}>
-      <Grid item xs={7.2}>
+      <Grid item md={7.2} xs={12}>
         <TextField
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
@@ -142,7 +142,8 @@ const Process = () => {
 
       <Grid
         item
-        xs={4.8}
+        md={4.8}
+        xs={12}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"end"}
@@ -151,24 +152,61 @@ const Process = () => {
       </Grid>
       {/* --------------------------Filter Options---------------------------------- */}
 
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <DateFilter date={date} setDate={setDate} today={today} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CategoryFilter category={category} setCategory={setCategory} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={12}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <SubCategoryFilter
           subCategory={subCategory}
           setSubCategory={setSubCategory}
         />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <StatusFilter status={status} setStatus={setStatus} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
+
+      {/* ------------------Supplier Cards----------------------- */}
 
       {data.map((item, key) => {
         return (

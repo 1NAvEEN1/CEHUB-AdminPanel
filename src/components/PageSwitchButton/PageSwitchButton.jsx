@@ -51,8 +51,8 @@ const PageSwitchButton = ({ currentUrl }) => {
           justifyContent: "center",
           borderRadius: 1,
           p: 1,
-          pl: { md: 2, xs: 1 },
-          pr: { md: 2, xs: 1 },
+          pl: { lg: 2, xs: 1 },
+          pr: { lg: 2, xs: 1 },
           ":hover": {
             color: "#F47621",
             cursor: "pointer",

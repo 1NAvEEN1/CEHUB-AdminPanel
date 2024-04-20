@@ -43,7 +43,7 @@ const SupplierPreviewCard = ({ data, page }) => {
 
   return (
     <Grid container border={"1px solid #EFF0F6"} borderRadius={3} p={2.5}>
-      <Grid item xs={4} mt={-0.5} di>
+      <Grid item md={4} xs={12} mt={-0.5}>
         <Box>
           <Typography variant="h5">{data.businessName}</Typography>
           <Typography fontSize={15} fontWeight={500} color={"#4D4D4D"}>
@@ -54,7 +54,7 @@ const SupplierPreviewCard = ({ data, page }) => {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={5}>
+      <Grid item md={5} xs={12} mt={{ xs: 1.5, md: 0 }}>
         <Grid
           container
           spacing={1}
@@ -126,10 +126,12 @@ const SupplierPreviewCard = ({ data, page }) => {
       </Grid>
       <Grid
         item
-        xs={3}
+        md={3}
+        xs={12}
         display={"flex"}
         alignItems={"center"}
-        justifyContent={"end"}
+        justifyContent={{md: "end", xs: "center"}}
+        mt={{md: 0, xs: 2}}
         pr={3}
       >
         <Box display={"flex"} alignItems={"center"}>

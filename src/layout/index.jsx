@@ -136,7 +136,7 @@ function Layout() {
       <Main open={open}>
         <DrawerHeader />
         <Box
-          ml={-2}
+          ml={{md:-1,xs:-2}}
           mr={-3}
           pt={{
             md: 0,

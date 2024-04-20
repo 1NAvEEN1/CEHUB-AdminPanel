@@ -30,25 +30,62 @@ const Map = () => {
     <Grid container spacing={2} width={"100%"}>
       {/* --------------------------Filter Options---------------------------------- */}
 
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <DateFilter date={date} setDate={setDate} today={today} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CategoryFilter category={category} setCategory={setCategory} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={12}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <SubCategoryFilter
           subCategory={subCategory}
           setSubCategory={setSubCategory}
         />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <StatusFilter status={status} setStatus={setStatus} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
 
+      {/* --------------Map---------- */}
+      
       <Grid item xs={12}>
         <Box height={"90svh"} width={"100%"}>
           <GoogleMapReact
