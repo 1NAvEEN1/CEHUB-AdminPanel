@@ -236,75 +236,164 @@ const Overview = () => {
     <Grid container spacing={2} width={"100%"}>
       {/* --------------------------Filter Options---------------------------------- */}
 
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <DateFilter date={date} setDate={setDate} today={today} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CategoryFilter category={category} setCategory={setCategory} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={12}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <SubCategoryFilter
           subCategory={subCategory}
           setSubCategory={setSubCategory}
         />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <StatusFilter status={status} setStatus={setStatus} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <ProvinceFilter province={province} setProvince={setProvince} />
       </Grid>
       <Grid item xs={12}></Grid>
 
       {/* ---------------------------Count Cards-------------------------------------- */}
 
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CountCard count={counts.totalSupplier} title={"Total suppliers"} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CountCard count={counts.product} title={"Products"} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CountCard count={counts.rawMaterial} title={"Raw materials"} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CountCard count={counts.joinCount} title={"Join with CEHub"} />
       </Grid>
-      <Grid item xs={2.4} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={2.4}
+        md={4}
+        xs={6}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <CountCard count={counts.joinPercentage} title={"Join with CEHub %"} />
       </Grid>
       <Grid item xs={12}></Grid>
 
       {/* --------------------------Bar Charts------------------------------------------ */}
-      <Grid item xs={7.2} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={7.2}
+        md={8}
+        xs={12}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <BarChart data={barChartData} />
       </Grid>
-      <Grid item xs={4.8} display={"flex"} justifyContent={"center"}>
+      <Grid
+        item
+        lg={4.8}
+        md={4}
+        xs={12}
+        display={"flex"}
+        justifyContent={"center"}
+      >
         <SelectionStatusCard data={selectionStatusData} />
       </Grid>
 
       {/* --------------------------Pie Charts------------------------------------------ */}
-      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+      <Grid item md={4} xs={12} display={"flex"} justifyContent={"center"}>
         <PieChartCard data={RegBusinessPieData} />
       </Grid>
-      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+      <Grid item md={4} xs={12} display={"flex"} justifyContent={"center"}>
         <PieChartCard data={PvtPieData} />
       </Grid>
-      <Grid item xs={4} display={"flex"} justifyContent={"center"}>
+      <Grid item md={4} xs={12} display={"flex"} justifyContent={"center"}>
         <PieChartCard data={QCPieData} />
       </Grid>
 
       {/* --------------------------List count Cards------------------------------------*/}
-      <Grid item xs={4}>
+      <Grid item lg={4} md={6} xs={12}>
         <ListCard data={ProvinceListCounts} title={"Province"} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item lg={4} md={6} xs={12}>
         <ListCard data={CategoryListCounts} title={"Product Categories"} />
       </Grid>
-      <Grid item xs={4}>
-        <ListCard data={FoodListCounts} title={"Food, Feed & Beverage"} />
-        <Box mt={2}></Box>
-        <ListCard data={CoconutListCounts} title={"Coconut"} />
+      <Grid item lg={4} xs={12}>
+        <Grid container spacing={2}>
+          <Grid item lg={12} md={6} xs={12}>
+            <ListCard data={FoodListCounts} title={"Food, Feed & Beverage"} />
+          </Grid>
+          <Grid item lg={12} md={6} xs={12}>
+            <ListCard data={CoconutListCounts} title={"Coconut"} />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

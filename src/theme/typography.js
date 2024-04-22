@@ -8,13 +8,6 @@ import { pxToRem, responsiveFontSizes } from "../utils/getFontValue";
 const typography = {
   fontFamily: [
     '"Poppins"',
-    "Roboto",
-    '"Helvetica Neue"',
-    "Arial",
-    "sans-serif",
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
   ].join(","),
   fontSize: 12,
   fontWeightRegular: 400,

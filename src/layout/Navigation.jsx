@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import Logo from "../assets/NavigationLogo.png";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
+import CloseIcon from "@mui/icons-material/Close";
 
 const MenuItemsList = [
   {
@@ -36,7 +37,7 @@ const MenuItemsList = [
   },
 ];
 
-const Navigation = ({ currentUrl }) => {
+const Navigation = ({ currentUrl, handleDrawerClose }) => {
   const navigate = useNavigate();
 
   const [selectedMenuItem, setSelectedMenuItem] = useState(
@@ -101,10 +102,9 @@ const Navigation = ({ currentUrl }) => {
   return (
     <Box
       sx={{
-        boxShadow: 3,
-        borderRadius: 2,
         mt: 3,
         height: "100%",
+        bgcolor: "white",
       }}
     >
       <Grid container spacing={3}>
@@ -130,6 +130,19 @@ const Navigation = ({ currentUrl }) => {
           </Grid>
         ))}
       </Grid>
+      <Box
+        display={{ xs: "flex", lg: "none" }}
+        justifyContent={"center"}
+        mt={15}
+      >
+        <IconButton
+          sx={{ boxShadow: 2, bgcolor: "#E8E8E8" }}
+          onClick={handleDrawerClose}
+          size="small"
+        >
+          <CloseIcon fontSize="medium" />
+        </IconButton>
+      </Box>
     </Box>
   );
 };
