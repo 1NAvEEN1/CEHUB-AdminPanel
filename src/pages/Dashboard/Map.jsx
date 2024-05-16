@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import DateFilter from "../../components/FilterComponents/DateFilter";
 import { CategoryFilter } from "../../components/FilterComponents/CategoryFilter";
@@ -12,6 +12,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { GetCities } from "../../services/LocationService";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -37,8 +38,8 @@ const Map = () => {
     libraries,
   });
 
-  const [locations, setLocations] = useState(
-    [{
+  const [locations, setLocations] = useState([
+    {
       lat: 7.2905715,
       lng: 80.6337262,
       id: "1",
@@ -72,10 +73,30 @@ const Map = () => {
       id: "5",
       number: "0769114074",
       name: "Naveen Jayathilaka",
-    },]
-  );
+    },
+  ]);
 
   const [selectedLocation, setSelectedLocation] = useState(null);
+
+  const [cities, setCities] = useState([]);
+  const [citiesLoading, setCitiesLoading] = useState(false); // Add loading state
+
+  const getCities = async () => {
+    setCitiesLoading(true); // Set loading to true before fetching
+    try {
+      const response = await GetCities(2);
+      console.log(response.data);
+      setCities(response.data);
+    } catch (error) {
+      console.error("Error fetching Cities:", error);
+    } finally {
+      setCitiesLoading(false); // Set loading to false when done fetching
+    }
+  };
+
+  useEffect(() => {
+    getCities();
+  }, []);
 
   return (
     <Grid container spacing={2} width={"100%"}>
@@ -145,10 +166,10 @@ const Map = () => {
               zoom={10}
               center={center}
             >
-              {locations.map((location, index) => (
+              {cities.map((location, index) => (
                 <Marker
                   key={index}
-                  position={{ lat: location.lat, lng: location.lng }}
+                  position={{ lat: parseFloat(location.latitude), lng:parseFloat(location.longitude) }}
                   onClick={() => setSelectedLocation(location)}
                 />
               ))}
@@ -156,8 +177,8 @@ const Map = () => {
               {selectedLocation && (
                 <InfoWindow
                   position={{
-                    lat: selectedLocation.lat,
-                    lng: selectedLocation.lng,
+                    lat: selectedLocation.parseFloat(location.latitude),
+                    lng: selectedLocation.parseFloat(location.longitude),
                   }}
                   onCloseClick={() => setSelectedLocation(null)}
                 >
