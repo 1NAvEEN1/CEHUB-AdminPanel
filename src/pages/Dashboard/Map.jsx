@@ -167,24 +167,27 @@ const Map = () => {
               center={center}
             >
               {cities.map((location, index) => (
-                <Marker
-                  key={index}
-                  position={{ lat: parseFloat(location.latitude), lng:parseFloat(location.longitude) }}
-                  onClick={() => setSelectedLocation(location)}
-                />
+                  <Marker
+                    key={index}
+                    position={{
+                      lat: parseFloat(location.latitude),
+                      lng: parseFloat(location.longitude),
+                    }}
+                    onClick={() => setSelectedLocation(location)}
+                  />
               ))}
-
               {selectedLocation && (
                 <InfoWindow
                   position={{
-                    lat: selectedLocation.parseFloat(location.latitude),
-                    lng: selectedLocation.parseFloat(location.longitude),
+                    lat: parseFloat(selectedLocation.latitude),
+                    lng: parseFloat(selectedLocation.longitude),
                   }}
                   onCloseClick={() => setSelectedLocation(null)}
                 >
                   <div>
-                    <h3>{selectedLocation.name}</h3>
-                    <p>Phone: {selectedLocation.number}</p>
+                    <h3>Naveen</h3>
+                    <p>Phone: 0769114074</p>
+                    <p>Category: Tea</p>
                   </div>
                 </InfoWindow>
               )}

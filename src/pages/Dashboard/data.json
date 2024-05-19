@@ -1,0 +1,198 @@
+{
+  "counts": {
+    "totalSupplier": 1750,
+    "product": 1000,
+    "rawMaterial": 750,
+    "joinCount": 1545,
+    "joinPercentage": 95
+  },
+
+  "barChartData": [
+    { "month": "JAN", "count": 100 },
+    { "month": "FEB", "count": 130 },
+    { "month": "MAR", "count": 130 },
+    { "month": "APR", "count": 230 },
+    { "month": "MAY", "count": 250 },
+    { "month": "JUN", "count": 200 },
+    { "month": "JUL", "count": 230 },
+    { "month": "AUG", "count": 100 },
+    { "month": "SEP", "count": 250 },
+    { "month": "OCT", "count": 300 },
+    { "month": "NOV", "count": 350 },
+    { "month": "DEC", "count": 400 }
+  ],
+
+  "selectionStatusData": {
+    "Qualified": 350,
+    "Processing": 1225,
+    "Reject": 175
+  },
+
+  "RegBusinessPieData": {
+    "Registered": 1000,
+    "Unregistered": 750
+  },
+
+  "PvtBusinessPieData": {
+    "Pvt": 1000,
+    "Partnership": 750,
+    "Solo": 500
+  },
+
+  "QCPieData": {
+    "Available": 1000,
+    "NotAvailable": 750
+  },
+
+  "ProvinceListCounts": [
+    {
+      "name": "Western",
+      "count": 175
+    },
+    {
+      "name": "Central",
+      "count": 125
+    },
+    {
+      "name": "Southern",
+      "count": 115
+    },
+    {
+      "name": "North Western",
+      "count": 95
+    },
+    {
+      "name": "Sabaragamuwa",
+      "count": 91
+    },
+    {
+      "name": "Eastern",
+      "count": 87
+    },
+    {
+      "name": "Uva",
+      "count": 65
+    },
+    {
+      "name": "North Central",
+      "count": 54
+    },
+    {
+      "name": "Northern",
+      "count": 23
+    }
+  ],
+
+  "CategoryListCounts": [
+    {
+      "name": "Tea",
+      "count": 175
+    },
+    {
+      "name": "Rubber",
+      "count": 125
+    },
+    {
+      "name": "Coconut",
+      "count": 115
+    },
+    {
+      "name": "Spices",
+      "count": 95
+    },
+    {
+      "name": "Herbal products",
+      "count": 91
+    },
+    {
+      "name": "Food, Feed & Beverage",
+      "count": 87
+    },
+    {
+      "name": "Electrical and Electronics",
+      "count": 65
+    },
+    {
+      "name": "Garments and Textiles",
+      "count": 54
+    },
+    {
+      "name": "Gems and Jewellery",
+      "count": 23
+    },
+    {
+      "name": "Other",
+      "count": 10
+    }
+  ],
+
+  "FoodListCounts": [
+    {
+      "name": "Dehydrated foods",
+      "count": 50
+    },
+    {
+      "name": "Processed vegetables, fruits",
+      "count": 20
+    },
+    {
+      "name": "Fruit juice",
+      "count": 10
+    },
+    {
+      "name": "Processed foods",
+      "count": 5
+    },
+    {
+      "name": "Cereals",
+      "count": 2
+    },
+    {
+      "name": "Other",
+      "count": 1
+    }
+  ],
+  
+  "CoconutListCounts": [
+    {
+      "name": "Coconut water",
+      "count": 50
+    },
+    {
+      "name": "King coconut water",
+      "count": 20
+    },
+    {
+      "name": "Coconut oil",
+      "count": 10
+    },
+    {
+      "name": "Coconut milk ",
+      "count": 5
+    },
+    {
+      "name": "Coconut Butter",
+      "count": 2
+    },
+    {
+      "name": "Coconut cream",
+      "count": 2
+    },
+    {
+      "name": "Coconut flour",
+      "count": 2
+    },
+    {
+      "name": "Coconut Jam",
+      "count": 1
+    },
+    {
+      "name": "Coconut Chips",
+      "count": 1
+    },
+    {
+      "name": "Other",
+      "count": 1
+    }
+  ]
+}
